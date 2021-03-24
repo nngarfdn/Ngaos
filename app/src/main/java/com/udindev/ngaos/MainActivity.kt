@@ -20,5 +20,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(i)
         }
 
+        binding.btnNotif.setOnClickListener {
+            val i = Intent(this, NotificationActivity::class.java)
+            startActivity(i)
+        }
     }
 }

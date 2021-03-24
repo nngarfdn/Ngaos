@@ -180,7 +180,6 @@ public class WaktuSholatActivity extends AppCompatActivity {
     private void getLocation() throws IOException {
         //Check Permissions again
         if (ActivityCompat.checkSelfPermission(WaktuSholatActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(WaktuSholatActivity.this,
-
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(WaktuSholatActivity.this, new String[]
                     {Manifest.permission.ACCESS_FINE_LOCATION}, GlobalConfig.REQUEST_CODE_LOCATION_PERMISSION);

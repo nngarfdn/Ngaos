@@ -2,5 +2,6 @@
     <string name="app_name">Ngaos</string>
 
     <string name="google_maps_key">AIzaSyDhEtkswNnbzz9kSHaZv3kbaUOUvFsROiQ</string>
+    <string name="content_text">Notification</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

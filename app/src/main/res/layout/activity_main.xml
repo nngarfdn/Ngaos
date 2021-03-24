@@ -5,11 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="32dp"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btn_waktuSholat"
         android:text="Waktu sholat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_notif"
+        android:text="Notifikasi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
