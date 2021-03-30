@@ -19,11 +19,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ngaos"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.dashboard.DashboardActivity"></activity>
+        <activity android:name=".ui.auth.RegisterActivity" />
+        <activity android:name=".ui.auth.LoginActivity" />
+
         <receiver
             android:name=".utils.MyReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
-
+            android:exported="true" />
         <receiver
             android:name=".utils.AlarmReceiver"
             android:enabled="true"

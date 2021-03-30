@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.udindev.ngaos.databinding.ActivityMainBinding
+import com.udindev.ngaos.ui.auth.LoginActivity
+import com.udindev.ngaos.ui.dashboard.DashboardActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,5 +26,17 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this, NotificationActivity::class.java)
             startActivity(i)
         }
+
+        binding.btnLogin.setOnClickListener {
+            val i = Intent(this, LoginActivity::class.java)
+            startActivity(i)
+        }
+
+        binding.btnDashboard.setOnClickListener {
+            val i = Intent(this, DashboardActivity::class.java)
+            startActivity(i)
+        }
+
+
     }
 }
