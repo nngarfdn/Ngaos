@@ -24,6 +24,7 @@ import com.schibstedspain.leku.LATITUDE
 import com.schibstedspain.leku.LOCATION_ADDRESS
 import com.schibstedspain.leku.LONGITUDE
 import com.schibstedspain.leku.LocationPickerActivity
+import com.udindev.ngaos.NotificationActivity
 import com.udindev.ngaos.WaktuSholatActivity
 import com.udindev.ngaos.api.ApiInterface
 import com.udindev.ngaos.api.ApiIslamicPrayerTimes
@@ -69,7 +70,7 @@ class DashboardActivity : AppCompatActivity() {
         supportActionBar?.elevation = 0f
 
         binding.cardView.setOnClickListener{
-            val i = Intent(this, WaktuSholatActivity::class.java)
+            val i = Intent(this, NotificationActivity::class.java)
             startActivity(i)
         }
 
@@ -100,13 +101,48 @@ class DashboardActivity : AppCompatActivity() {
 
         var time = "16:00"
 
+        val calendar = Calendar.getInstance()
+//        calendar.timeInMillis = str.toLong()
+        val date = calendar.time
+
+        val h = calendar.get(Calendar.HOUR_OF_DAY)
+        val m = calendar.get(Calendar.MINUTE)
+        val result = h.toString() + ":" + m.toString()
+
         //TODO : logicnya cek dengan waktu sekarang
 
-        if (time > times.asr) {
-            binding.txtWaktuSolat.text = times.maghrib
-        } else{
+        // set waktu dzuhur
+        if (result > times.fajr && result < times.dhuhr ) {
+            binding.txtSholat.text = "Dzuhur"
+            binding.txtWaktuSolat.text = times.dhuhr
+        }
+
+        if (result > times.dhuhr && result < times.asr ) {
+            binding.txtSholat.text = "Ashar"
             binding.txtWaktuSolat.text = times.asr
         }
+
+        if (result > times.asr && result < times.maghrib ) {
+            binding.txtSholat.text = "Magrib"
+            binding.txtWaktuSolat.text = times.maghrib
+        }
+
+        if (result > times.maghrib && result < times.isha ) {
+            binding.txtSholat.text = "Isya"
+            binding.txtWaktuSolat.text = times.isha
+        }
+
+        if (result > times.isha && result < "23:59" ) {
+            binding.txtSholat.text = "Subuh"
+            binding.txtWaktuSolat.text = times.fajr
+        }
+
+        if (result < times.fajr ) {
+            binding.txtSholat.text = "Subuh"
+            binding.txtWaktuSolat.text = times.fajr
+        }
+
+
 //        tv_subuh.setText(times.fajr)
 //        tv_dhuhur.setText(times.dhuhr)
 //        tv_ashar.setText(times.asr)
@@ -131,13 +167,13 @@ class DashboardActivity : AppCompatActivity() {
                 call: Call<ResponsePrayerTime>,
                 response: Response<ResponsePrayerTime>
             ) {
-                val times = response.body()!!.results.datetime[0].times
+                val times = response.body()?.results?.datetime?.get(0)?.times
                 if (times == null) {
                     binding.progressBar.visibility = View.VISIBLE
                 }
                 binding.progressBar.visibility = View.GONE
                 try {
-                    time(times)
+                    times?.let { time(it) }
                 } catch (e: java.lang.Exception) {
                     e.printStackTrace()
                 }
@@ -153,6 +189,8 @@ class DashboardActivity : AppCompatActivity() {
     private fun getLocation() {
 
         //Check Permissions again
+        latitude = "0.0"
+        longitude = "0.0"
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -194,8 +232,16 @@ class DashboardActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-            mlatitude = latitude
-            mlongitude = longitude
+
+            if (latitude.equals("0.0") && longitude.equals("0.0")) {
+                mlatitude = latitude
+                mlongitude = longitude
+            } else {
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+            }
+
+//            mlatitude = latitude
+//            mlongitude = longitude
 
             //getData
             try {
@@ -208,8 +254,7 @@ class DashboardActivity : AppCompatActivity() {
                 var returnedAddress = (addresses as MutableList<Address>?)?.get(0)?.locality
 
                 alamatku = returnedAddress.toString()
-
-                binding.txtLocation.setText(returnedAddress)
+                if (returnedAddress != null) binding.txtLocation.setText(returnedAddress) else binding.txtLocation.setText("Kecamatan tidak ada")
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -259,7 +304,7 @@ class DashboardActivity : AppCompatActivity() {
 
                 alamatku = returnedAddress.toString()
 
-                binding.txtLocation.setText(returnedAddress)
+                if (returnedAddress != null) binding.txtLocation.setText(returnedAddress) else binding.txtLocation.setText("Kecamatan tidak ada")
 
 //                binding.txtLocation.setText(alamat)
                 getTimes()
