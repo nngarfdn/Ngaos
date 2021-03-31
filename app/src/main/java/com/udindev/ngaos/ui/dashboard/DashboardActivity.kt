@@ -1,16 +1,23 @@
-package com.udindev.ngaos.ui.dashboard;
+package com.udindev.ngaos.ui.dashboard
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.nanangarifudin.moviecatalogue.ui.home.SectionPagerAdapter
+import com.udindev.ngaos.R
+import com.udindev.ngaos.databinding.ActivityDashboardBinding
 
-import android.os.Bundle;
+class DashboardActivity : AppCompatActivity() {
 
-import com.udindev.ngaos.R;
+    private lateinit var binding :ActivityDashboardBinding;
 
-public class DashboardActivity extends AppCompatActivity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityDashboardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        val sectionsPagerAdapter = SectionPagerAdapter(this, supportFragmentManager)
+        binding.viewPager.adapter = sectionsPagerAdapter
+        binding.tabs.setupWithViewPager(binding.viewPager)
+        supportActionBar?.elevation = 0f
     }
 }
