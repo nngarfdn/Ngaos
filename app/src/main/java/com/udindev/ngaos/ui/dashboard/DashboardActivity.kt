@@ -55,6 +55,7 @@ class DashboardActivity : AppCompatActivity() {
     private val toolbar: Toolbar? = null
     private val btn_sholat: Button? = null
     private val timePickerDialog: TimePickerDialog? = null
+    private var alamatku : String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -203,9 +204,10 @@ class DashboardActivity : AppCompatActivity() {
                 geocoder = Geocoder(this, Locale.getDefault())
                 addresses = geocoder!!.getFromLocation(lat, lang, 1)
 
-                val address = (addresses as MutableList<Address>?)?.get(0)?.locality
 
                 var returnedAddress = (addresses as MutableList<Address>?)?.get(0)?.locality
+
+                alamatku = returnedAddress.toString()
 
                 binding.txtLocation.setText(returnedAddress)
             } catch (e: Exception) {
@@ -247,7 +249,19 @@ class DashboardActivity : AppCompatActivity() {
                 mlongitude = longitude.toString()
                 val alamat = data.getStringExtra(LOCATION_ADDRESS)
 
-                binding.txtLocation.setText(alamat)
+                val lat = latitude.toDouble()
+                val lang = longitude.toDouble()
+                geocoder = Geocoder(this, Locale.getDefault())
+                addresses = geocoder!!.getFromLocation(lat, lang, 1)
+
+
+                var returnedAddress = (addresses as MutableList<Address>?)?.get(0)?.locality
+
+                alamatku = returnedAddress.toString()
+
+                binding.txtLocation.setText(returnedAddress)
+
+//                binding.txtLocation.setText(alamat)
                 getTimes()
             }
         }
