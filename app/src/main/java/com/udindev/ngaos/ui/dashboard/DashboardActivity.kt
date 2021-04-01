@@ -6,6 +6,7 @@ package com.udindev.ngaos.ui.dashboard
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.AsyncTask
@@ -24,6 +25,8 @@ import com.nanang.lokasi.MySimpleLocation
 import com.nanang.retrocoro.ui.base.SholatViewModelFactory
 import com.nanang.retrocoro.ui.main.viewmodel.SholatViewModel
 import com.nanangarifudin.moviecatalogue.ui.home.SectionPagerAdapter
+import com.schibstedspain.leku.LATITUDE
+import com.schibstedspain.leku.LONGITUDE
 import com.schibstedspain.leku.LocationPickerActivity
 import com.udindev.ngaos.api.ApiHelper
 import com.udindev.ngaos.databinding.ActivityDashboardBinding
@@ -41,10 +44,9 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
     private lateinit var binding :ActivityDashboardBinding
     private lateinit var mySimpleLocation: MySimpleLocation
     private lateinit var sholatViewModel: SholatViewModel
-
-
     companion object{
         private const val TAG = "Sholat Activity"
+        private const val MAP_BUTTON_REQUEST_CODE = 1
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +61,7 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
 
         checkMyLocationPermission()
         setupViewModel()
+        openMaps()
 
     }
 
@@ -76,25 +79,61 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
                                     setWaktuSholat(waktu, location)
                                 }
                             }
-
 //                            retrieveList(users)
+                            binding.progressBar.visibility = View.INVISIBLE
                         }
                     }
                     Status.ERROR -> {
-//                        progressbar.visibility = View.INVISIBLE
-//                        rv_news.visibility = View.VISIBLE
+                        binding.progressBar.visibility = View.INVISIBLE
                         Log.d(TAG, "setupObservers: ${it.message}")
                         Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                     }
-
                     Status.LOADING -> {
-//                        progressbar.visibility = View.VISIBLE
-//                        rv_news.visibility = View.INVISIBLE
-//                        progressbar.playAnimation()
+                       binding.progressBar.visibility = View.VISIBLE
+
                     }
                 }
             }
         })
+    }
+
+    private fun openMaps() {
+        binding.txtLocation.setOnClickListener {
+            val intent: Intent = LocationPickerActivity.Builder()
+                    .withUnnamedRoadHidden()
+                    .withLegacyLayout()
+                    .build(this)
+            intent.putExtra("test", "this is test")
+            startActivityForResult(intent, MAP_BUTTON_REQUEST_CODE)
+        }
+    }
+
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && data != null) {
+            if (requestCode == 1) {
+                val latitude = data.getDoubleExtra(LATITUDE, 0.0)
+                val longitude = data.getDoubleExtra(LONGITUDE, 0.0)
+                val geocoder = Geocoder(this, Locale.getDefault())
+                val addresses = geocoder.getFromLocation(latitude, longitude, 1)
+                val returnedAddress = (addresses as MutableList<Address>?)?.get(0)?.locality
+                val lokasi = returnedAddress.toString()
+                if (returnedAddress != null) {
+                    binding.txtLocation.text = lokasi
+                } else {
+                    binding.txtLocation.text = "Kecamatan tidak ada"
+                }
+
+                val calendar = Calendar.getInstance()
+                val formatter = SimpleDateFormat("yyyy-MM-dd")
+                val dateNow = formatter.format(calendar.time)
+                setupObservers(latitude.toString(), longitude.toString(), dateNow, lokasi)
+            }
+        }
+        if (resultCode == RESULT_CANCELED) {
+            Log.d("RESULT****", "CANCELLED")
+        }
     }
 
     private fun setupViewModel() {
@@ -163,15 +202,6 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
                 try {
                     val addresses = geoCoder.getFromLocation(latitude!!, longitude!!, 1)
 
-
-//                    if (addresses != null && addresses.size != 0) {
-//                        val fullAddress = addresses[0].getAddressLine(0)
-//                        fullAddress
-//                    } else {
-//                        "Alamat Tidak Diketahui"
-//                    }
-//                    binding.tvSearchLocation.visibility = View.GONE
-
                     val lokasi = addresses[0].locality ?: "Alamat Tidak Diketahui"
                     binding.txtLocation.visibility = View.VISIBLE
                     binding.txtLocation.text = lokasi
@@ -205,8 +235,6 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
         val m = calendar.get(Calendar.MINUTE)
         val result = "$h:$m"
 
-        //TODO : logicnya cek dengan waktu sekarang
-
         // set waktu dzuhur
         if (result > times.fajr && result < times.dhuhr ) {
             binding.txtSholat.text = "Dzuhur"
@@ -238,6 +266,5 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
             binding.txtWaktuSolat.text = times.fajr
         }
     }
-
 
 }

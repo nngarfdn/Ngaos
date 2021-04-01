@@ -90,7 +90,6 @@ class MyReceiver : BroadcastReceiver() {
         val intent = Intent(context, MyReceiver::class.java)
         intent.putExtra(EXTRA_MESSAGE, message)
 //        val putExtra = intent.putExtra(EXTRA_TYPE, type)
-
         val timeArray = time.split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
 
         val calendar = Calendar.getInstance()
