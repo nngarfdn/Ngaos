@@ -1,23 +1,21 @@
 package com.nanang.lokasi
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Looper
 import android.util.Log
-import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 
 class MySimpleLocation (val activity: Activity, mySimpleLocationCallBack: MySimpleLocationCallBack) :
-        MySettingLocation.MySettingLocationCallback {
+    MySettingLocation.MySettingLocationCallback {
 
     private val TAG = "MYSIMPLELOCATION"
     private var mLocationCallback: LocationCallback? = null
 
     private var mFusedLocationClient: FusedLocationProviderClient =
-            LocationServices.getFusedLocationProviderClient(activity)
+        LocationServices.getFusedLocationProviderClient(activity)
 
     interface MySimpleLocationCallBack {
         fun getLocation(location: Location?)
@@ -54,9 +52,9 @@ class MySimpleLocation (val activity: Activity, mySimpleLocationCallBack: MySimp
     fun getMyLocation() {
         Log.d(TAG, "getMyLocation : Trying to get location")
         mFusedLocationClient.requestLocationUpdates(
-                locationRequest,
-                mLocationCallback!!,
-                Looper.myLooper()
+            locationRequest,
+            mLocationCallback!!,
+            Looper.myLooper()
         )
     }
 
@@ -67,9 +65,9 @@ class MySimpleLocation (val activity: Activity, mySimpleLocationCallBack: MySimp
 
     fun stopGetLocation() {
         mFusedLocationClient.removeLocationUpdates(mLocationCallback)
-                .addOnCompleteListener {
-                    Log.d(TAG, "Location Callback was removed $it")
-                }
+            .addOnCompleteListener {
+                Log.d(TAG, "Location Callback was removed $it")
+            }
     }
 
     override fun settingLocationActive(isActive: Boolean) {
