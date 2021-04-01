@@ -30,7 +30,9 @@ import com.udindev.ngaos.api.ApiInterface
 import com.udindev.ngaos.api.ApiIslamicPrayerTimes
 import com.udindev.ngaos.databinding.ActivityDashboardBinding
 import com.udindev.ngaos.model.ResponsePrayerTime
+import com.udindev.ngaos.model.Sholat
 import com.udindev.ngaos.model.Times
+import com.udindev.ngaos.ui.jadwalsholat.JadwalSholatActivity
 import com.udindev.ngaos.utils.GlobalConfig
 import retrofit2.Call
 import retrofit2.Callback
@@ -57,6 +59,7 @@ class DashboardActivity : AppCompatActivity() {
     private val btn_sholat: Button? = null
     private val timePickerDialog: TimePickerDialog? = null
     private var alamatku : String = ""
+    private var sholat = Sholat()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,11 +71,6 @@ class DashboardActivity : AppCompatActivity() {
         binding.viewPager.adapter = sectionsPagerAdapter
         binding.tabs.setupWithViewPager(binding.viewPager)
         supportActionBar?.elevation = 0f
-
-        binding.cardView.setOnClickListener{
-            val i = Intent(this, NotificationActivity::class.java)
-            startActivity(i)
-        }
 
         ActivityCompat.requestPermissions(
             this,
@@ -93,18 +91,33 @@ class DashboardActivity : AppCompatActivity() {
             }
         }
         getTimes()
-
     }
 
     fun time(times: Times) {
         binding.progressBar.visibility = View.GONE
+        try {
+            val lat = latitude.toDouble()
+            val lang = longitude.toDouble()
+            geocoder = Geocoder(this, Locale.getDefault())
+            addresses = geocoder!!.getFromLocation(lat, lang, 1)
 
-        var time = "16:00"
 
+            var returnedAddress = (addresses as MutableList<Address>?)?.get(0)?.locality
+
+            alamatku = returnedAddress.toString()
+
+
+            binding.cardView.setOnClickListener{
+                var shol = Sholat(returnedAddress, times.fajr, times.dhuhr, times.asr, times.maghrib, times.isha)
+                val i = Intent(this, JadwalSholatActivity::class.java)
+                i.putExtra(JadwalSholatActivity.EXTRA_SHOLAT, shol)
+                startActivity(i)
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         val calendar = Calendar.getInstance()
-//        calendar.timeInMillis = str.toLong()
-        val date = calendar.time
-
         val h = calendar.get(Calendar.HOUR_OF_DAY)
         val m = calendar.get(Calendar.MINUTE)
         val result = h.toString() + ":" + m.toString()
@@ -137,17 +150,11 @@ class DashboardActivity : AppCompatActivity() {
             binding.txtWaktuSolat.text = times.fajr
         }
 
-        if (result < times.fajr ) {
+        if (result < times.fajr && result > "00:01") {
             binding.txtSholat.text = "Subuh"
             binding.txtWaktuSolat.text = times.fajr
         }
 
-
-//        tv_subuh.setText(times.fajr)
-//        tv_dhuhur.setText(times.dhuhr)
-//        tv_ashar.setText(times.asr)
-//        tv_maghrib.setText(times.maghrib)
-//        tv_isya.setText(times.isha)
     }
 
 
@@ -173,7 +180,10 @@ class DashboardActivity : AppCompatActivity() {
                 }
                 binding.progressBar.visibility = View.GONE
                 try {
-                    times?.let { time(it) }
+                    times?.let {
+                        time(it)
+
+                    }
                 } catch (e: java.lang.Exception) {
                     e.printStackTrace()
                 }
@@ -254,7 +264,14 @@ class DashboardActivity : AppCompatActivity() {
                 var returnedAddress = (addresses as MutableList<Address>?)?.get(0)?.locality
 
                 alamatku = returnedAddress.toString()
-                if (returnedAddress != null) binding.txtLocation.setText(returnedAddress) else binding.txtLocation.setText("Kecamatan tidak ada")
+
+                if (returnedAddress != null) {
+                    binding.txtLocation.setText(returnedAddress)
+                    sholat.lokasi = returnedAddress
+                } else {
+                    binding.txtLocation.setText("Kecamatan tidak ada")
+                    sholat.lokasi = "Kecamatan tidak ada"
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -304,8 +321,13 @@ class DashboardActivity : AppCompatActivity() {
 
                 alamatku = returnedAddress.toString()
 
-                if (returnedAddress != null) binding.txtLocation.setText(returnedAddress) else binding.txtLocation.setText("Kecamatan tidak ada")
-
+                if (returnedAddress != null) {
+                    binding.txtLocation.setText(returnedAddress)
+                    sholat.lokasi = returnedAddress
+                } else {
+                    binding.txtLocation.setText("Kecamatan tidak ada")
+                    sholat.lokasi = "Kecamatan tidak ada"
+                }
 //                binding.txtLocation.setText(alamat)
                 getTimes()
             }
@@ -313,6 +335,16 @@ class DashboardActivity : AppCompatActivity() {
         if (resultCode == RESULT_CANCELED) {
             Log.d("RESULT****", "CANCELLED")
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        getTimes()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getTimes()
     }
 
 }

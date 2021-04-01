@@ -8,4 +8,14 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">false</item>
     </style>
+
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="android:background">@color/green</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:elevation" tools:targetApi="lollipop">8dp</item>
+    </style>
+
 </resources>
