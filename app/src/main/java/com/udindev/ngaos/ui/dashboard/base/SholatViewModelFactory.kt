@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.nanang.retrocoro.ui.main.viewmodel.SholatViewModel
 import com.udindev.ngaos.api.ApiHelper
-import com.udindev.ngaos.repository.SholatRepository
+import com.udindev.ngaos.data.repository.SholatRepository
 
 class SholatViewModelFactory(private val apiHelper: ApiHelper) : ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

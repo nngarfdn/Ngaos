@@ -21,7 +21,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.profile.ProfileActivity"></activity>
         <activity android:name=".ui.jadwalsholat.JadwalSholatActivity" />
-        <activity android:name=".ui.dashboard.DashboardActivity" />
+        <activity android:name=".ui.dashboard.main.view.DashboardActivity" />
         <activity android:name=".ui.auth.RegisterActivity" />
         <activity android:name=".ui.auth.LoginActivity" />
 
@@ -35,7 +35,6 @@
             android:exported="true" />
 
         <activity android:name=".NotificationActivity" />
-        <activity android:name=".WaktuSholatActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.udindev.ngaos.model;
+package com.udindev.ngaos.data.response;
 
 import com.google.gson.annotations.SerializedName;
 

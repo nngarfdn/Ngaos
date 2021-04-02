@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.udindev.ngaos.ui.dashboard
+package com.udindev.ngaos.ui.dashboard.main.view
 
 
 import android.Manifest
@@ -20,19 +20,19 @@ import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import com.nanang.berberita.data.api.RetrofitBuilder
+import com.udindev.ngaos.api.RetrofitBuilder
 import com.nanang.lokasi.MySimpleLocation
 import com.nanang.retrocoro.ui.base.SholatViewModelFactory
 import com.nanang.retrocoro.ui.main.viewmodel.SholatViewModel
-import com.nanangarifudin.moviecatalogue.ui.home.SectionPagerAdapter
+import com.udindev.ngaos.ui.dashboard.main.adapter.SectionPagerAdapter
 import com.schibstedspain.leku.LATITUDE
 import com.schibstedspain.leku.LONGITUDE
 import com.schibstedspain.leku.LocationPickerActivity
 import com.udindev.ngaos.api.ApiHelper
 import com.udindev.ngaos.databinding.ActivityDashboardBinding
-import com.udindev.ngaos.model.Datetime
-import com.udindev.ngaos.model.Sholat
-import com.udindev.ngaos.model.Times
+import com.udindev.ngaos.data.model.Sholat
+import com.udindev.ngaos.data.response.Datetime
+import com.udindev.ngaos.data.response.Times
 import com.udindev.ngaos.ui.jadwalsholat.JadwalSholatActivity
 import com.udindev.ngaos.ui.profile.ProfileActivity
 import com.udindev.ngaos.utils.Status
@@ -63,9 +63,7 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
         checkMyLocationPermission()
         setupViewModel()
         openMaps()
-
         binding.imageView2.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
-
 
     }
 

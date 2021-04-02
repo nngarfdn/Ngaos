@@ -1,4 +1,4 @@
-package com.udindev.ngaos.ui.dashboard
+package com.udindev.ngaos.ui.dashboard.main.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

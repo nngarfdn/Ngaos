@@ -1,6 +1,6 @@
-package com.nanang.berberita.data.api
+package com.udindev.ngaos.api
 
-import com.udindev.ngaos.model.ResponsePrayerTime
+import com.udindev.ngaos.data.response.ResponsePrayerTime
 import retrofit2.http.GET
 import retrofit2.http.Query
 

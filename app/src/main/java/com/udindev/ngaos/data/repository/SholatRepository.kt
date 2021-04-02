@@ -1,4 +1,4 @@
-package com.udindev.ngaos.repository
+package com.udindev.ngaos.data.repository
 
 import com.udindev.ngaos.api.ApiHelper
 

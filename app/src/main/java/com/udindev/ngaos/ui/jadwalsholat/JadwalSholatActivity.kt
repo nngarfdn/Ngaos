@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.udindev.ngaos.R
 import com.udindev.ngaos.databinding.ActivityJadwalSholatBinding
-import com.udindev.ngaos.model.Sholat
+import com.udindev.ngaos.data.model.Sholat
 import com.udindev.ngaos.utils.MyReceiver
 
 

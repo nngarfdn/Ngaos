@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.udindev.ngaos.databinding.ActivityMainBinding
 import com.udindev.ngaos.ui.auth.LoginActivity
-import com.udindev.ngaos.ui.dashboard.DashboardActivity
+import com.udindev.ngaos.ui.dashboard.main.view.DashboardActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,11 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.btnWaktuSholat.setOnClickListener {
-            val i = Intent(this, WaktuSholatActivity::class.java)
-            startActivity(i)
-        }
 
         binding.btnNotif.setOnClickListener {
             val i = Intent(this, NotificationActivity::class.java)
