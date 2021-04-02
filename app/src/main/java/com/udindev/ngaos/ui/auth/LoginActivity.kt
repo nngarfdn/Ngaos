@@ -1,28 +1,29 @@
-package com.udindev.ngaos.ui.auth;
+package com.udindev.ngaos.ui.auth
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
+import com.udindev.ngaos.databinding.ActivityLoginBinding
+import com.udindev.ngaos.ui.auth.base.LoggedViewModelFactory
+import com.udindev.ngaos.ui.auth.base.LoginRegisterViewModelFactory
+import com.udindev.ngaos.ui.auth.viewmodel.LoggedInViewModel
+import com.udindev.ngaos.ui.auth.viewmodel.LoginRegisterViewModel
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
+class LoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
 
-import com.udindev.ngaos.R;
-import com.udindev.ngaos.databinding.ActivityLoginBinding;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-public class LoginActivity extends AppCompatActivity {
-
-    ActivityLoginBinding binding;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        binding.btnDaftar.setOnClickListener { v: View? ->
+            val i = Intent(this, RegisterActivity::class.java)
+            startActivity(i)
+        }
 
 
-        binding.btnDaftar.setOnClickListener(v -> {
-            Intent i = new Intent(this, RegisterActivity.class);
-            startActivity(i);
-        });
     }
 }

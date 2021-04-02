@@ -5,15 +5,21 @@ import android.app.Application;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.udindev.ngaos.ui.auth.viewmodel.LoggedInViewModel;
 import com.udindev.ngaos.ui.auth.viewmodel.LoginRegisterViewModel;
 
-public class LoginRegisterViewModelFactory implements ViewModelProvider.Factory {
+public class LoggedViewModelFactory implements ViewModelProvider.Factory {
     private Application mApplication;
-    public LoginRegisterViewModelFactory(Application application) {
+    private String mParam;
+
+
+    public LoggedViewModelFactory(Application application) {
         mApplication = application;
     }
+
+
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
-        return (T) new LoginRegisterViewModel(mApplication);
+        return (T) new LoggedInViewModel(mApplication);
     }
 }

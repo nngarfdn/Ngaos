@@ -59,11 +59,14 @@ public class AuthAppRepository {
 
                             FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                             if (firebaseUser != null) {
-                                UserProfileChangeRequest profileUpdate;
+                                UserProfileChangeRequest
                                 profileUpdate = new UserProfileChangeRequest.Builder()
                                         .setDisplayName(name)
                                         .build();
-                                Log.d("Register", "register:" + profileUpdate.getDisplayName());
+                                firebaseUser.updateProfile(profileUpdate).addOnCompleteListener(updateProfileTask -> {
+                                    if (updateProfileTask.isSuccessful()) Log.d("Update", "updateProfile: success");
+                                    else Log.w("Update", "updateProfile: failure", task.getException());
+                                });
                             }
                         } else {
                             Toast.makeText(application.getApplicationContext(), "Registration Failure: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

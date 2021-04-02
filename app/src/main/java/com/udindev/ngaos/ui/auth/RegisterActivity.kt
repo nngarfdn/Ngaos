@@ -2,10 +2,12 @@ package com.udindev.ngaos.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.udindev.ngaos.databinding.ActivityRegisterBinding
 import com.udindev.ngaos.ui.auth.base.LoginRegisterViewModelFactory
 import com.udindev.ngaos.ui.auth.viewmodel.LoginRegisterViewModel
@@ -18,7 +20,10 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        loginRegisterViewModel = ViewModelProviders.of(this, LoginRegisterViewModelFactory(this.application)).get(
+        loginRegisterViewModel = ViewModelProviders.of(
+            this,
+            LoginRegisterViewModelFactory(this.application)
+        ).get(
             LoginRegisterViewModel::class.java
         )
         binding.btnMasuk.setOnClickListener { v: View? ->
@@ -27,6 +32,7 @@ class RegisterActivity : AppCompatActivity() {
             val password = binding!!.passwordEditText.text.toString()
             if (email.length > 0 && password.length > 0 && name.length > 0) {
                 loginRegisterViewModel!!.register(email, password, name)
+
                 startActivity(Intent(this, DashboardActivity::class.java))
             } else {
                 Toast.makeText(this, "Pastikan semua data sudah lengkap", Toast.LENGTH_SHORT).show()

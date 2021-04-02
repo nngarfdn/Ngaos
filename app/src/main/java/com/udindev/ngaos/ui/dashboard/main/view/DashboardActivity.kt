@@ -20,19 +20,21 @@ import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import com.udindev.ngaos.api.RetrofitBuilder
 import com.nanang.lokasi.MySimpleLocation
 import com.nanang.retrocoro.ui.base.SholatViewModelFactory
 import com.nanang.retrocoro.ui.main.viewmodel.SholatViewModel
-import com.udindev.ngaos.ui.dashboard.main.adapter.SectionPagerAdapter
 import com.schibstedspain.leku.LATITUDE
 import com.schibstedspain.leku.LONGITUDE
 import com.schibstedspain.leku.LocationPickerActivity
 import com.udindev.ngaos.api.ApiHelper
-import com.udindev.ngaos.databinding.ActivityDashboardBinding
+import com.udindev.ngaos.api.RetrofitBuilder
 import com.udindev.ngaos.data.model.Sholat
 import com.udindev.ngaos.data.response.Datetime
 import com.udindev.ngaos.data.response.Times
+import com.udindev.ngaos.databinding.ActivityDashboardBinding
+import com.udindev.ngaos.ui.auth.base.LoggedViewModelFactory
+import com.udindev.ngaos.ui.auth.viewmodel.LoggedInViewModel
+import com.udindev.ngaos.ui.dashboard.main.adapter.SectionPagerAdapter
 import com.udindev.ngaos.ui.jadwalsholat.JadwalSholatActivity
 import com.udindev.ngaos.ui.profile.ProfileActivity
 import com.udindev.ngaos.utils.Status
@@ -45,6 +47,7 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
     private lateinit var binding :ActivityDashboardBinding
     private lateinit var mySimpleLocation: MySimpleLocation
     private lateinit var sholatViewModel: SholatViewModel
+    private lateinit var loggedInViewModel: LoggedInViewModel
     companion object{
         private const val TAG = "Sholat Activity"
         private const val MAP_BUTTON_REQUEST_CODE = 1
@@ -62,9 +65,25 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
 
         checkMyLocationPermission()
         setupViewModel()
+        setupAuthObservers()
         openMaps()
-        binding.imageView2.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
+        binding.imageView2.setOnClickListener { startActivity(
+            Intent(
+                this,
+                ProfileActivity::class.java
+            )
+        ) }
 
+    }
+
+    private fun setupAuthObservers() {
+        loggedInViewModel.userLiveData.observe(this,
+            { firebaseUser ->
+                if (firebaseUser != null) {
+                    Log.d(TAG, "setupAuthObservers: ${firebaseUser.displayName}")
+                    binding.txtNama.text = firebaseUser.displayName
+                }
+            })
     }
 
     private fun setupObservers(latitude: String, longitude: String, date: String, location: String) {
@@ -91,7 +110,7 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
                         Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                     }
                     Status.LOADING -> {
-                       binding.progressBar.visibility = View.VISIBLE
+                        binding.progressBar.visibility = View.VISIBLE
 
                     }
                 }
@@ -140,15 +159,19 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
 
     private fun setupViewModel() {
         sholatViewModel = ViewModelProviders.of(
-                this, SholatViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
+            this, SholatViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
         ).get(SholatViewModel::class.java)
+
+        loggedInViewModel = ViewModelProviders.of(this, LoggedViewModelFactory(this.application)).get(
+            LoggedInViewModel::class.java
+        )
     }
 
     private fun checkMyLocationPermission() {
         Dexter.withActivity(this)
             .withPermissions(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
             )
             .withListener(object : MultiplePermissionsListener {
                 override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
@@ -162,7 +185,10 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
 //                            binding.tvMyLocation.visibility = View.GONE
 //                            binding.tvSearchLocation.visibility = View.VISIBLE
 
-                            mySimpleLocation = MySimpleLocation(this@DashboardActivity, this@DashboardActivity)
+                            mySimpleLocation = MySimpleLocation(
+                                this@DashboardActivity,
+                                this@DashboardActivity
+                            )
                             mySimpleLocation.checkLocationSetting(this@DashboardActivity)
                         }
                         report.isAnyPermissionPermanentlyDenied -> {
@@ -181,8 +207,8 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
                 }
 
                 override fun onPermissionRationaleShouldBeShown(
-                        p0: MutableList<com.karumi.dexter.listener.PermissionRequest>?,
-                        token: PermissionToken?
+                    p0: MutableList<com.karumi.dexter.listener.PermissionRequest>?,
+                    token: PermissionToken?
                 ) {
                     Log.d("PERMISSIONCHECK", "onPermissionRationaleShouldBeShown")
                     token?.continuePermissionRequest()
@@ -226,7 +252,14 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
     fun setWaktuSholat(times: Times, location: String){
 
         binding.cardView.setOnClickListener{
-            val shol = Sholat(location, times.fajr, times.dhuhr, times.asr, times.maghrib, times.isha)
+            val shol = Sholat(
+                location,
+                times.fajr,
+                times.dhuhr,
+                times.asr,
+                times.maghrib,
+                times.isha
+            )
             val i = Intent(this, JadwalSholatActivity::class.java)
             i.putExtra(JadwalSholatActivity.EXTRA_SHOLAT, shol)
             startActivity(i)
