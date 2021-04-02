@@ -34,6 +34,7 @@ import com.udindev.ngaos.model.Datetime
 import com.udindev.ngaos.model.Sholat
 import com.udindev.ngaos.model.Times
 import com.udindev.ngaos.ui.jadwalsholat.JadwalSholatActivity
+import com.udindev.ngaos.ui.profile.ProfileActivity
 import com.udindev.ngaos.utils.Status
 import java.text.SimpleDateFormat
 import java.util.*
@@ -62,6 +63,9 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
         checkMyLocationPermission()
         setupViewModel()
         openMaps()
+
+        binding.imageView2.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
+
 
     }
 

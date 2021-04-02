@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ngaos"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.jadwalsholat.JadwalSholatActivity"></activity>
+        <activity android:name=".ui.profile.ProfileActivity"></activity>
+        <activity android:name=".ui.jadwalsholat.JadwalSholatActivity" />
         <activity android:name=".ui.dashboard.DashboardActivity" />
         <activity android:name=".ui.auth.RegisterActivity" />
         <activity android:name=".ui.auth.LoginActivity" />
