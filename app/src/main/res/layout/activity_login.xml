@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="32dp"
-    tools:context=".ui.auth.LoginActivity">
+    tools:context=".ui.auth.main.view.LoginActivity">
 
 
     <androidx.constraintlayout.widget.Guideline

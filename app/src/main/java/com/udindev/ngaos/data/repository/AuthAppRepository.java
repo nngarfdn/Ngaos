@@ -14,6 +14,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.udindev.ngaos.data.model.Account;
+import com.udindev.ngaos.ui.auth.preference.AuthPreference;
 
 public class AuthAppRepository {
     private Application application;
@@ -21,12 +23,14 @@ public class AuthAppRepository {
     private FirebaseAuth firebaseAuth;
     private MutableLiveData<FirebaseUser> userLiveData;
     private MutableLiveData<Boolean> loggedOutLiveData;
+    private final AuthPreference authPreference;
 
     public AuthAppRepository(Application application) {
         this.application = application;
         this.firebaseAuth = FirebaseAuth.getInstance();
         this.userLiveData = new MutableLiveData<>();
         this.loggedOutLiveData = new MutableLiveData<>();
+        authPreference = new AuthPreference(application.getApplicationContext());
 
         if (firebaseAuth.getCurrentUser() != null) {
             userLiveData.postValue(firebaseAuth.getCurrentUser());
@@ -42,6 +46,9 @@ public class AuthAppRepository {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 userLiveData.postValue(firebaseAuth.getCurrentUser());
+                                String id = firebaseAuth.getCurrentUser().getUid();
+                                Account account = new Account(id, email,firebaseAuth.getCurrentUser().getDisplayName());
+                                authPreference.setData(account);
                             } else {
                                 Toast.makeText(application.getApplicationContext(), "Login Failure: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
@@ -67,6 +74,12 @@ public class AuthAppRepository {
                                     if (updateProfileTask.isSuccessful()) Log.d("Update", "updateProfile: success");
                                     else Log.w("Update", "updateProfile: failure", task.getException());
                                 });
+
+                                String id = firebaseUser.getUid();
+                                Account account = new Account(id, email,firebaseUser.getDisplayName());
+                                authPreference.setData(account);
+                                userLiveData.postValue(firebaseUser);
+
                             }
                         } else {
                             Toast.makeText(application.getApplicationContext(), "Registration Failure: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

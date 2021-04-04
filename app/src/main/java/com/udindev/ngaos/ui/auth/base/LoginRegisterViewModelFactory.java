@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.udindev.ngaos.ui.auth.viewmodel.LoginRegisterViewModel;
+import com.udindev.ngaos.ui.auth.main.viewmodel.LoginRegisterViewModel;
 
 public class LoginRegisterViewModelFactory implements ViewModelProvider.Factory {
     private Application mApplication;
