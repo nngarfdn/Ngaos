@@ -16,7 +16,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import com.google.firebase.auth.FirebaseAuth
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -51,6 +50,7 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
     private lateinit var sholatViewModel: SholatViewModel
     private lateinit var loggedInViewModel: LoggedInViewModel
     private lateinit var authPreference: AuthPreference
+    private var pressedTime: Long = 0
     companion object{
         private const val TAG = "Sholat Activity"
         private const val MAP_BUTTON_REQUEST_CODE = 1
@@ -320,6 +320,19 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
     override fun onResume() {
         super.onResume()
         setupAuthObservers()
+    }
+
+    override fun onBackPressed() {
+        if (pressedTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+            val intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_HOME)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        } else {
+            Toast.makeText(baseContext, "Tekan sekali lagi untuk keluar", Toast.LENGTH_SHORT).show()
+        }
+        pressedTime = System.currentTimeMillis()
     }
 
 
