@@ -334,6 +334,4 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
         }
         pressedTime = System.currentTimeMillis()
     }
-
-
 }
