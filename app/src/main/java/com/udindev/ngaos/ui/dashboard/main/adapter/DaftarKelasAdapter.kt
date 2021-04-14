@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.udindev.ngaos.R
 import com.udindev.ngaos.data.model.Kelas
+import com.udindev.ngaos.ui.kelas.DetailActivity
 import com.udindev.ngaos.utils.AppUtils.loadImageFromUrl
 import java.util.*
 
@@ -42,9 +43,9 @@ class DaftarKelasAdapter(private val activity: Activity) : RecyclerView.Adapter<
         val item = countryFilterList[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
-//            val intent = Intent(activity, BookDetailActivity::class.java)
+            val intent = Intent(activity, DetailActivity::class.java)
 //            intent.putExtra(BookDetailActivity.EXTRA_BOOK, item)
-//            activity.startActivity(intent)
+            activity.startActivity(intent)
         }
     }
 
@@ -60,7 +61,6 @@ class DaftarKelasAdapter(private val activity: Activity) : RecyclerView.Adapter<
             tvName.text = item.namaKelas
             loadImageFromUrl(imgPhoto, item.photo)
         }
-
     }
 
     override fun getFilter(): Filter {
