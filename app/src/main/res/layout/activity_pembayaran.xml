@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.kelas.PembayaranActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Pembayaran" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_pembayaran"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:layout_editor_absoluteX="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Total biaya :"
+            android:textColor="@color/green"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Rp 20.000"
+            android:textColor="@color/orange"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvpilih"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Pilih metode pembayaran :"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvpilih">
+
+        <RadioButton
+            android:id="@+id/radioSubuh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/bg_radiobutton"
+            android:buttonTint="@color/green"
+            android:checked="true"
+            android:drawableLeft="@drawable/ic_gopay"
+            android:text=" " />
+
+        <RadioButton
+            android:id="@+id/radioDzuhur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/bg_radiobutton"
+            android:buttonTint="@color/green"
+            android:drawableLeft="@drawable/ic_ovo"
+            android:text=" " />
+
+        <RadioButton
+            android:id="@+id/radioAshar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/bg_radiobutton"
+            android:buttonTint="@color/green"
+            android:drawableStart="@drawable/ic_mandiri"
+            android:text=" " />
+
+        <RadioButton
+            android:id="@+id/radioBCA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/bg_radiobutton"
+            android:buttonTint="@color/green"
+            android:drawableStart="@drawable/ic_bca"
+            android:text=" " />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvpetunjuk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Petunjuk pembayaran :"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup1" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView10"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/tvpetunjuk">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:id="@+id/txt_petunjuk_bayar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/lorep"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@+id/imageView10"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/tvpetunjuk" />
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_pilih_gambar"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="Pilih Gambar"
+        android:textAllCaps="false"
+        android:textColor="@color/green"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+        app:layout_constraintEnd_toEndOf="@+id/btn_bergabung"
+        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintTop_toTopOf="@+id/imageView10" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_imgupload"
+        app:layout_constraintBottom_toTopOf="@+id/btn_bergabung"
+        app:layout_constraintStart_toStartOf="@+id/btn_bergabung" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_bergabung"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="32dp"
+        android:text="Bergabung"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+         />
+</androidx.constraintlayout.widget.ConstraintLayout>
