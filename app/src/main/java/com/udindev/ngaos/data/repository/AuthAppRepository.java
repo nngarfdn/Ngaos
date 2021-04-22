@@ -39,28 +39,23 @@ public class AuthAppRepository {
     }
 
     public void login(String email, String password) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             firebaseAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(application.getMainExecutor(), new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                userLiveData.postValue(firebaseAuth.getCurrentUser());
-                                String id = firebaseAuth.getCurrentUser().getUid();
-                                Account account = new Account(id, email,firebaseAuth.getCurrentUser().getDisplayName());
-                                authPreference.setData(account);
-                            } else {
-                                Toast.makeText(application.getApplicationContext(), "Login Failure: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            userLiveData.postValue(firebaseAuth.getCurrentUser());
+                            String id = firebaseAuth.getCurrentUser().getUid();
+                            Account account = new Account(id, email,firebaseAuth.getCurrentUser().getDisplayName());
+                            authPreference.setData(account);
+                        } else {
+                            Toast.makeText(application.getApplicationContext(), "Login Failure: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-        }
+
     }
 
     public void register(String email, String password, String name) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             firebaseAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(application.getMainExecutor(), task -> {
+                    .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             userLiveData.postValue(firebaseAuth.getCurrentUser());
 
@@ -85,7 +80,7 @@ public class AuthAppRepository {
                             Toast.makeText(application.getApplicationContext(), "Registration Failure: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-        }
+
     }
 
     public void logOut() {
