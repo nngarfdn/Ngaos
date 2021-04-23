@@ -28,10 +28,7 @@ class LoginActivity : AppCompatActivity() {
         loginRegisterViewModel.userLiveData.observe(this, { firebaseUser ->
             if (firebaseUser != null) startActivity(Intent(this,DashboardActivity::class.java))
         })
-
         binding.btnDaftar.setOnClickListener{ startActivity(Intent(this, RegisterActivity::class.java)) }
-
-
         binding.btnMasuk.setOnClickListener { v: View? ->
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
@@ -41,6 +38,13 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Pastikan semua data sudah lengkap", Toast.LENGTH_SHORT).show()
             }
         }
+
+        binding.btnLupakatasandi.setOnClickListener {
+            val dialog = DialogResetPasword()
+            dialog.show(supportFragmentManager,"ResetPassword")
+        }
+
+
     }
 
 }

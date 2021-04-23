@@ -25,7 +25,7 @@
         <activity android:name=".ui.jadwalsholat.JadwalSholatActivity" />
         <activity android:name=".ui.dashboard.main.view.DashboardActivity" />
         <activity android:name=".ui.auth.main.view.RegisterActivity" />
-        <activity android:name=".ui.auth.main.view.LoginActivity" />
+        <activity android:name=".MainActivity" />
 
         <receiver
             android:name=".utils.MyReceiver"
@@ -33,7 +33,7 @@
             android:exported="true" />
 
         <activity android:name=".NotificationActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.auth.main.view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

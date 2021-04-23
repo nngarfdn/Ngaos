@@ -16,22 +16,19 @@ class PesanSekarangFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding : FragmentPesanSekarangBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         binding = FragmentPesanSekarangBinding.inflate(inflater, container, false)
 
         binding.btnBergabung.setOnClickListener{startActivity(Intent(context, PembayaranActivity::class.java))}
         return binding.root
     }
 
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+        }
+    }
 
 }
 

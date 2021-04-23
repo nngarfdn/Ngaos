@@ -27,6 +27,10 @@ public class LoginRegisterViewModel extends AndroidViewModel {
         authAppRepository.register(email, password, name);
     }
 
+    public void sendPasswordReset(String email){
+        authAppRepository.sendPasswordReset(email);
+    }
+
     public MutableLiveData<FirebaseUser> getUserLiveData() {
         return userLiveData;
     }
