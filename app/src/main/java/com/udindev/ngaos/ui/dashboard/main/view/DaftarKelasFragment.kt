@@ -40,7 +40,17 @@ class DaftarKelasFragment : Fragment() {
                 "varius ipsum sem iaculis. Consectetur neque vitae elit susp\n" +
                 "endisse. Ultricies placerat sit felis velit, odio venenatis et, \n" +
                 "consectetu", "https://images.unsplash.com/photo-1560740365-a52c20ade8fd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80")
+
+        var kelas2 = Kelas("2", "Belajar Iqro 6", "Mas Nasmi", "21 April 2021",
+            "20 Mei 2021", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n" +
+                    "Cursus maecenas vitae lobortis ut diam magna turpis. \n" +
+                    "Enim, ante in ut tristique neque. Amet bibendum pulvinar \n" +
+                    "varius ipsum sem iaculis. Consectetur neque vitae elit susp\n" +
+                    "endisse. Ultricies placerat sit felis velit, odio venenatis et, \n" +
+                    "consectetu", "https://images.unsplash.com/photo-1560740365-a52c20ade8fd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80")
+
         listKelas.add(kelas1)
+        listKelas.add(kelas2)
 
         adapter.data = listKelas
     }

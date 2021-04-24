@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ngaos"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.kelas.PembayaranActivity"></activity>
+        <activity android:name=".ui.search.SearchActivity"></activity>
+        <activity android:name=".ui.kelas.PembayaranActivity" />
         <activity android:name=".ui.kelas.DetailActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity android:name=".ui.jadwalsholat.JadwalSholatActivity" />

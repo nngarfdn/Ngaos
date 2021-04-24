@@ -38,6 +38,7 @@ import com.udindev.ngaos.ui.auth.preference.AuthPreference
 import com.udindev.ngaos.ui.dashboard.main.adapter.SectionPagerAdapter
 import com.udindev.ngaos.ui.jadwalsholat.JadwalSholatActivity
 import com.udindev.ngaos.ui.profile.ProfileActivity
+import com.udindev.ngaos.ui.search.SearchActivity
 import com.udindev.ngaos.utils.Status
 import java.text.SimpleDateFormat
 import java.util.*
@@ -75,12 +76,8 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
         binding.txtNama.text = authPreference.displayName
         Log.d(TAG, "onCreate: ${authPreference.displayName}")
 
-        binding.imageView2.setOnClickListener { startActivity(
-                Intent(
-                        this,
-                        ProfileActivity::class.java
-                )
-        ) }
+        binding.imageView2.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
+        binding.editText.setOnClickListener { startActivity(Intent(this, SearchActivity::class.java)) }
 
 
     }
