@@ -25,7 +25,7 @@ class JadwalSholatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         alarmReceiver = MyReceiver()
 
         val sharedPrefs = getSharedPreferences("com.udindev.ngaos", MODE_PRIVATE)

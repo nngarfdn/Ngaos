@@ -44,7 +44,7 @@ class DaftarKelasAdapter(private val activity: Activity) : RecyclerView.Adapter<
         holder.bind(item)
         holder.itemView.setOnClickListener {
             val intent = Intent(activity, DetailActivity::class.java)
-//            intent.putExtra(BookDetailActivity.EXTRA_BOOK, item)
+            intent.putExtra(DetailActivity.EXTRA_KELAS, item)
             activity.startActivity(intent)
         }
     }

@@ -20,6 +20,9 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         adapter = DaftarKelasAdapter(this)
 
         binding.rvDaftarKelas.layoutManager = LinearLayoutManager(this)
@@ -61,5 +64,10 @@ class SearchActivity : AppCompatActivity() {
         listKelas.add(kelas2)
 
         adapter.data = listKelas
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

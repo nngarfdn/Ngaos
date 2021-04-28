@@ -32,20 +32,6 @@
         app:layout_constraintTop_toTopOf="@+id/cv_image" />
 
     <TextView
-        android:id="@+id/txt_sisa_kelas"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/montserrat"
-        android:maxLines="1"
-        android:text="Sisa kuota kelas :  6"
-        android:textSize="10sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toStartOf="@+id/imageView8"
-        app:layout_constraintStart_toEndOf="@+id/cv_image"
-        app:layout_constraintTop_toBottomOf="@+id/txt_harga_kelas_lanj" />
-
-    <TextView
         android:id="@+id/txt_harga_kelas_lanj"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

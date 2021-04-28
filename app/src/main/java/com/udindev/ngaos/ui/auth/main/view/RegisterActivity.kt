@@ -25,6 +25,7 @@ class RegisterActivity : AppCompatActivity() {
             if (firebaseUser != null) startActivity(Intent(this,DashboardActivity::class.java))
         })
 
+        binding.btnDaftar.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java)) }
         binding.btnMasuk.setOnClickListener { v: View? ->
             val name = binding.namalengkapEditText.text.toString()
             val email = binding.emailEditText.text.toString()
