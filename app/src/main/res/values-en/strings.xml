@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="content_text">Always pray on time..</string>
+    <string name="kelas">Class</string>
+    <string name="diikuti">Following</string>
+    <string name="pilih_lokasi">choose a location</string>
+    <string name="cari_kelas">Search a class</string>
+    <string name="memuat_nama">containing the name</string>
+    <string name="lihat_profil">View Profil</string>
+    <string name="deskripsi_kelas">Class Description</string>
+    <string name="bergabung">Join</string>
+    <string name="subuh">Fajr</string>
+    <string name="katasandi">Password</string>
+    <string name="lupa_kata_sandi">Forgot password?</string>
+    <string name="masuk">Login</string>
+    <string name="belum_memiliki_akun">Don\'t have an account?</string>
+    <string name="jadwal_sholat">Prayer Schedule</string>
+    <string name="pengingat_sholat">Prayer Reminder</string>
+    <string name="daftar">Sign Up</string>
+    <string name="waktu_sholat">Prayer Times</string>
+    <string name="belum_diketahui">It is not yet known</string>
+    <string name="wilayah">Region</string>
+    <string name="notifikasi">Notification</string>
+    <string name="total_biaya">"Total cost : "</string>
+    <string name="pilih_gambar">Choose a Image</string>
+    <string name="pilih_bahasa">Choose a</string>
+    <string name="keluar">Logout</string>
+    <string name="nama_lengkap">Full Name</string>
+    <string name="kelas_diikuti">Following Class</string>
+    <string name="kirim">Send</string>
+    <string name="mohon_tunggu">Please wait</string>
+    <string name="sudah_memiliki_akun">Already have an account?</string>
+    <string name="konfirmasi_katasandi">Confirm Password</string>
+    <string name="tentang_aplikasi">About Application</string>
+    <string name="petunjuk_pembayaran">"Payment instruction : "</string>
+    <string name="pilih_metode_pembayaran">"Chose a payment method : "</string>
+    <string name="pesan_sekarang">Order now</string>
+    <string name="segera_amankan_kelas_ini_sebelum_kuota_habis">Immediately secure this class before the quota runs out</string>
+    <string name="tautan_penggantian_kata_sandi_n_akan_dikirimkan_melalui_email">Link password change will be sent via email.</string>
+</resources>

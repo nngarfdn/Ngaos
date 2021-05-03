@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Ngaos</string>
-    <string name="google_maps_key">AIzaSyDhEtkswNnbzz9kSHaZv3kbaUOUvFsROiQ</string>
+    <string name="app_name" translatable="false">Ngaos</string>
+    <string name="google_maps_key" translatable="false">AIzaSyDhEtkswNnbzz9kSHaZv3kbaUOUvFsROiQ</string>
     <string name="content_text">Selalu sholat tepat waktu ya..</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="kelas">Kelas</string>
     <string name="diikuti">Diikuti</string>
-    <string name="lorep">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <string name="lorep" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Cursus maecenas vitae lobortis ut diam magna turpis.
 Enim, ante in ut tristique neque. Amet bibendum pulvinar
 varius ipsum sem iaculis. Consectetur neque vitae elit susp
@@ -39,7 +39,7 @@ ssa fusce. Donec tincidunt dictum sem tristique malesuada
     <string name="cari_kelas">Cari kelas</string>
     <string name="assalamualaikum">Assalamualaikum,</string>
     <string name="memuat_nama">memuat nama</string>
-    <string name="hafalan_al_ikhlas">Hafalan Al Ikhlas</string>
+    <string name="hafalan_al_ikhlas" translatable="false">Hafalan Al Ikhlas</string>
     <string name="rp20_000">Rp20.000</string>
     <string name="habib_husein_ja_far_al_hadar">Habib Husein Ja\'far Al-Hadar</string>
     <string name="lihat_profil">Lihat profil</string>
