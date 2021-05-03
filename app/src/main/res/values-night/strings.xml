@@ -50,7 +50,8 @@
     <string name="mohon_tunggu">Mohon tunggu</string>
     <string name="tautan_penggantian_kata_sandi_n_akan_dikirimkan_melalui_email">Tautan penggantian kata sandi\n akan dikirimkan melalui email</string>
     <string name="kirim">Kirim</string>
-    <string name="kelas_diikuti">Kelas diikuti</string>m_kuota_habis">Segera amankan kelas ini sebelum kuota habis.</string>
+    <string name="kelas_diikuti">Kelas diikuti</string>
+    <string name="segera_amankan_kelas_ini_sebelum_kuota_habis">Segera amankan kelas ini sebelum kuota habis.</string>
     <string name="pesan_sekarang">Pesan Sekarang</string>
     <string name="hafalan_al_ikhlas">Hafalan Al Ikhlas</string>
 </resources>
