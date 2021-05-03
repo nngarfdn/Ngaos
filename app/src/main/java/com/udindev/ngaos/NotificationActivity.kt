@@ -19,6 +19,10 @@ class NotificationActivity : AppCompatActivity() {
 
         alarmReceiver = MyReceiver()
 
+
+
+
+
         val sharedPrefs = getSharedPreferences("com.udindev.ngaos", MODE_PRIVATE)
         binding.btnSwitch.setChecked(sharedPrefs.getBoolean("sholat", true))
 
