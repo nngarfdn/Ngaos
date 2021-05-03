@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:hint="Email"
+        android:hint="@string/email"
         app:boxStrokeColor="@color/green"
         app:hintTextColor="@color/green"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Katasandi"
+        android:hint="@string/katasandi"
         app:boxStrokeColor="@color/green"
         app:hintTextColor="@color/green"
         app:layout_constraintTop_toBottomOf="@+id/email_text_input"
@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Lupa kata sandi ?"
+        android:text="@string/lupa_kata_sandi"
         android:textAllCaps="false"
         android:textColor="@color/green"
         app:layout_constraintEnd_toEndOf="@+id/password_text_input"
@@ -84,7 +84,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="16dp"
-        android:text="Masuk"
+        android:text="@string/masuk"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/btn_lupakatasandi"
@@ -105,14 +105,14 @@
             android:id="@+id/txtbelum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Belum memiliki akun? " />
+            android:text="@string/belum_memiliki_akun" />
 
         <Button
             android:id="@+id/btn_daftar"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Daftar"
+            android:text="@string/daftar"
             android:textAllCaps="false"
             android:textColor="@color/green" />
 

@@ -1,14 +1,11 @@
 <resources>
     <string name="app_name">Ngaos</string>
-
     <string name="google_maps_key">AIzaSyDhEtkswNnbzz9kSHaZv3kbaUOUvFsROiQ</string>
     <string name="content_text">Selalu sholat tepat waktu ya..</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="kelas">Kelas</string>
     <string name="diikuti">Diikuti</string>
-
-
     <string name="lorep">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Cursus maecenas vitae lobortis ut diam magna turpis.
 Enim, ante in ut tristique neque. Amet bibendum pulvinar
@@ -37,7 +34,56 @@ ornare tellus vitae. Quis ullamcorper tempor adipiscing ulla
 mcorper malesuada. Ultrices lectus scelerisque pretium ma
 ssa fusce. Donec tincidunt dictum sem tristique malesuada
  donec volutpat, eget.</string>
-    <string name="magrib">Magrib</string>
     <string name="_18_07">18:07</string>
+    <string name="pilih_lokasi">pilih lokasi</string>
+    <string name="cari_kelas">Cari kelas</string>
+    <string name="assalamualaikum">Assalamualaikum,</string>
+    <string name="memuat_nama">memuat nama</string>
+    <string name="hafalan_al_ikhlas">Hafalan Al Ikhlas</string>
+    <string name="rp20_000">Rp20.000</string>
+    <string name="habib_husein_ja_far_al_hadar">Habib Husein Ja\'far Al-Hadar</string>
+    <string name="lihat_profil">Lihat profil</string>
+    <string name="_05_maret_2021_04_april_2021">05 Maret 2021 - 04 April 2021</string>
+    <string name="deskripsi_kelas">Deskripsi Kelas</string>
+    <string name="bergabung">Bergabung</string>
+    <string name="jadwal_sholat">Jadwal Sholat</string>
+    <string name="_04_25">04:25</string>
+    <string name="subuh">Subuh</string>
+    <string name="dzuhur">Dzuhur</string>
+    <string name="ashar">Ashar</string>
+    <string name="magrib">Magrib</string>
+    <string name="isya">Isya</string>
+    <string name="wilayah">Wilayah</string>
+    <string name="belum_diketahui">Belum diketahui</string>
+    <string name="pengingat_sholat">Pengingat Sholat</string>
+    <string name="email">Email</string>
+    <string name="katasandi">Katasandi</string>
+    <string name="lupa_kata_sandi">Lupa kata sandi ?</string>
+    <string name="masuk">Masuk</string>
+    <string name="belum_memiliki_akun">Belum memiliki akun?</string>
+    <string name="daftar">Daftar</string>
+    <string name="waktu_sholat">Waktu sholat</string>
+    <string name="notifikasi">Notifikasi</string>
+    <string name="login">Login</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="total_biaya">Total biaya :</string>
+    <string name="rp_20_000">Rp 20.000</string>
+    <string name="pilih_metode_pembayaran">Pilih metode pembayaran :</string>
+    <string name="petunjuk_pembayaran">Petunjuk pembayaran :</string>
+    <string name="pilih_gambar">Pilih Gambar</string>
+    <string name="rachma_aurya_n">Rachma Aurya N.</string>
+    <string name="rachmaaurya_gmail_com">rachmaaurya@gmail.com</string>
+    <string name="pilih_bahasa">Pilih Bahasa</string>
+    <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="keluar">Keluar</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="konfirmasi_katasandi">Konfirmasi Katasandi</string>
+    <string name="sudah_memiliki_akun">Sudah memiliki akun?</string>
+    <string name="mohon_tunggu">Mohon tunggu</string>
+    <string name="tautan_penggantian_kata_sandi_n_akan_dikirimkan_melalui_email">Tautan penggantian kata sandi\n akan dikirimkan melalui email</string>
+    <string name="kirim">Kirim</string>
+    <string name="kelas_diikuti">Kelas diikuti</string>
+    <string name="segera_amankan_kelas_ini_sebelum_kuota_habis">Segera amankan kelas ini sebelum kuota habis.</string>
+    <string name="pesan_sekarang">Pesan Sekarang</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

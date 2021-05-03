@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.udindev.ngaos.databinding.ActivityNotificationBinding
 import com.udindev.ngaos.utils.MyReceiver
 
-
 class NotificationActivity : AppCompatActivity() {
 
     private lateinit var alarmReceiver: MyReceiver
@@ -18,10 +17,6 @@ class NotificationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         alarmReceiver = MyReceiver()
-
-
-
-
 
         val sharedPrefs = getSharedPreferences("com.udindev.ngaos", MODE_PRIVATE)
         binding.btnSwitch.setChecked(sharedPrefs.getBoolean("sholat", true))

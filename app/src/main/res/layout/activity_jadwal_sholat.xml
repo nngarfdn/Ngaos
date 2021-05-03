@@ -16,8 +16,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="Jadwal Sholat" />
 
-
-
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
@@ -34,7 +32,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/montserrat"
-        android:text="Jadwal Sholat"
+        android:text="@string/jadwal_sholat"
         android:textColor="@color/black"
         android:textSize="24dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="12dp"
-                android:text="04:25"
+                android:text="@string/_04_25"
                 android:textColor="@color/orange"
                 android:textSize="36sp"
                 android:textStyle="bold" />
@@ -89,7 +87,7 @@
             android:buttonTint="@color/green"
             android:layout_marginHorizontal="4dp"
             android:background="@drawable/bg_radiobutton"
-            android:text="Subuh  " />
+            android:text="@string/subuh" />
 
         <RadioButton
             android:id="@+id/radioDzuhur"
@@ -98,7 +96,7 @@
             android:buttonTint="@color/green"
             android:layout_marginHorizontal="4dp"
             android:background="@drawable/bg_radiobutton"
-            android:text="Dzuhur  " />
+            android:text="@string/dzuhur" />
 
         <RadioButton
             android:id="@+id/radioAshar"
@@ -107,7 +105,7 @@
             android:layout_marginHorizontal="4dp"
             android:buttonTint="@color/green"
             android:background="@drawable/bg_radiobutton"
-            android:text="Ashar  " />
+            android:text="@string/ashar" />
 
     </RadioGroup>
 
@@ -128,7 +126,7 @@
             android:layout_marginHorizontal="4dp"
             android:background="@drawable/bg_radiobutton"
             android:buttonTint="@color/green"
-            android:text="Magrib  " />
+            android:text="@string/magrib" />
 
         <RadioButton
             android:id="@+id/radioIsya"
@@ -137,7 +135,7 @@
             android:layout_marginHorizontal="4dp"
             android:background="@drawable/bg_radiobutton"
             android:buttonTint="@color/green"
-            android:text="Isya  " />
+            android:text="@string/isya" />
     </RadioGroup>
 
     <TextView
@@ -146,7 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat"
-        android:text="Wilayah"
+        android:text="@string/wilayah"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cardView"
@@ -176,7 +174,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/montserrat"
-            android:text="Belum diketahui"
+            android:text="@string/belum_diketahui"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -188,7 +186,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat"
-        android:text="Pengingat Sholat"
+        android:text="@string/pengingat_sholat"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cardView"
@@ -210,7 +208,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
-            android:text="Subuh"
+            android:text="@string/subuh"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -239,7 +237,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/montserrat"
-            android:text="Dzuhur"
+            android:text="@string/dzuhur"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -270,7 +268,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/montserrat"
-            android:text="Ashar"
+            android:text="@string/ashar"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -299,7 +297,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/montserrat"
-            android:text="Magrib"
+            android:text="@string/magrib"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -328,7 +326,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/montserrat"
-            android:text="Isya"
+            android:text="@string/isya"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"

@@ -10,28 +10,28 @@
 
     <Button
         android:id="@+id/btn_waktuSholat"
-        android:text="Waktu sholat"
+        android:text="@string/waktu_sholat"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn_notif"
-        android:text="Notifikasi"
+        android:text="@string/notifikasi"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn_login"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn_dashboard"
-        android:text="Dashboard"
+        android:text="@string/dashboard"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
