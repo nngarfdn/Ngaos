@@ -51,7 +51,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="42dp"
                         android:layout_height="42dp"
-                        android:src="@drawable/ic_avatar_alfiah" />
+                        android:src="@drawable/ic_avatar_rifki" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -95,10 +95,10 @@
                     android:orientation="horizontal"
                     android:padding="16dp">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="42dp"
                         android:layout_height="42dp"
-                        android:src="@drawable/ic_avatar_arief" />
+                        android:src="@drawable/ic_avatar_nanang" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -143,10 +143,10 @@
                     android:orientation="horizontal"
                     android:padding="16dp">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="42dp"
                         android:layout_height="42dp"
-                        android:src="@drawable/ic_avatar_indra" />
+                        android:src="@drawable/ic_avatar_rachma" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -173,7 +173,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="19/441234/SV/16584" />
+                                android:text="19/441234/SV/16586" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
