@@ -18,8 +18,6 @@ class PesanSekarangFragment : BottomSheetDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentPesanSekarangBinding.inflate(inflater, container, false)
-
-
         kelas = arguments?.getParcelable(DetailActivity.EXTRA_KELAS)
         binding.txtNamaKelLanjutan.text = kelas?.namaKelas
         loadImageFromUrl(binding.imgKelas, kelas?.photo)
