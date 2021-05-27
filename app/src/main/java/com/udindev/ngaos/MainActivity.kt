@@ -1,8 +1,10 @@
 package com.udindev.ngaos
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.udindev.ngaos.databinding.ActivityMainBinding
 import com.udindev.ngaos.ui.auth.main.view.LoginActivity
 import com.udindev.ngaos.ui.dashboard.main.view.DashboardActivity

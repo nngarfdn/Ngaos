@@ -4,9 +4,12 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.udindev.ngaos.R
 import com.udindev.ngaos.databinding.ActivityProfileBinding
 import com.udindev.ngaos.ui.auth.base.LoggedViewModelFactory
 import com.udindev.ngaos.ui.auth.main.view.LoginActivity
@@ -26,6 +29,13 @@ class ProfileActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         setupViewModel()
         setupAuthObservers()
+
+        binding = ActivityProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.pilihBahasa.setOnClickListener{
+            val langIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+            startActivity(langIntent)
+        }
 
         binding.btnLogout.setOnClickListener {
 

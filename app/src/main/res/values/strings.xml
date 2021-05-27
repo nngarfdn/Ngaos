@@ -34,29 +34,29 @@ ornare tellus vitae. Quis ullamcorper tempor adipiscing ulla
 mcorper malesuada. Ultrices lectus scelerisque pretium ma
 ssa fusce. Donec tincidunt dictum sem tristique malesuada
  donec volutpat, eget.</string>
-    <string name="_18_07">18:07</string>
+    <string name="_18_07" translatable="false">18:07</string>
     <string name="pilih_lokasi">pilih lokasi</string>
     <string name="cari_kelas">Cari kelas</string>
-    <string name="assalamualaikum">Assalamualaikum,</string>
+    <string name="assalamualaikum" translatable="false">Assalamualaikum,</string>
     <string name="memuat_nama">memuat nama</string>
     <string name="hafalan_al_ikhlas" translatable="false">Hafalan Al Ikhlas</string>
-    <string name="rp20_000">Rp20.000</string>
-    <string name="habib_husein_ja_far_al_hadar">Habib Husein Ja\'far Al-Hadar</string>
+    <string name="rp20_000" translatable="false">Rp20.000</string>
+    <string name="habib_husein_ja_far_al_hadar" translatable="false">Habib Husein Ja\'far Al-Hadar</string>
     <string name="lihat_profil">Lihat profil</string>
-    <string name="_05_maret_2021_04_april_2021">05 Maret 2021 - 04 April 2021</string>
+    <string name="_05_maret_2021_04_april_2021" translatable="false">05 Maret 2021 - 04 April 2021</string>
     <string name="deskripsi_kelas">Deskripsi Kelas</string>
     <string name="bergabung">Bergabung</string>
     <string name="jadwal_sholat">Jadwal Sholat</string>
-    <string name="_04_25">04:25</string>
+    <string name="_04_25" translatable="false">04:25</string>
     <string name="subuh">Subuh</string>
-    <string name="dzuhur">Dzuhur</string>
-    <string name="ashar">Ashar</string>
-    <string name="magrib">Magrib</string>
-    <string name="isya">Isya</string>
+    <string name="dzuhur" translatable="false">Dzuhur</string>
+    <string name="ashar" translatable="false">Ashar</string>
+    <string name="magrib" translatable="false">Magrib</string>
+    <string name="isya" translatable="false">Isya</string>
     <string name="wilayah">Wilayah</string>
     <string name="belum_diketahui">Belum diketahui</string>
     <string name="pengingat_sholat">Pengingat Sholat</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="katasandi">Katasandi</string>
     <string name="lupa_kata_sandi">Lupa kata sandi ?</string>
     <string name="masuk">Masuk</string>
@@ -64,15 +64,15 @@ ssa fusce. Donec tincidunt dictum sem tristique malesuada
     <string name="daftar">Daftar</string>
     <string name="waktu_sholat">Waktu sholat</string>
     <string name="notifikasi">Notifikasi</string>
-    <string name="login">Login</string>
-    <string name="dashboard">Dashboard</string>
+    <string name="login" translatable="false">Login</string>
+    <string name="dashboard" translatable="false">Dashboard</string>
     <string name="total_biaya">Total biaya :</string>
-    <string name="rp_20_000">Rp 20.000</string>
+    <string name="rp_20_000" translatable="false">Rp 20.000</string>
     <string name="pilih_metode_pembayaran">Pilih metode pembayaran :</string>
     <string name="petunjuk_pembayaran">Petunjuk pembayaran :</string>
     <string name="pilih_gambar">Pilih Gambar</string>
-    <string name="rachma_aurya_n">Rachma Aurya N.</string>
-    <string name="rachmaaurya_gmail_com">rachmaaurya@gmail.com</string>
+    <string name="rachma_aurya_n" translatable="false">Rachma Aurya N.</string>
+    <string name="rachmaaurya_gmail_com" translatable="false">rachmaaurya@gmail.com</string>
     <string name="pilih_bahasa">Pilih Bahasa</string>
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <string name="keluar">Keluar</string>
