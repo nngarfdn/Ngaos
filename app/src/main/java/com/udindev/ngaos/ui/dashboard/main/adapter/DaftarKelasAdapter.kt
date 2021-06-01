@@ -12,14 +12,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.udindev.ngaos.R
 import com.udindev.ngaos.data.model.Kelas
+import com.udindev.ngaos.data.response.kelas.Data
 import com.udindev.ngaos.ui.kelas.DetailActivity
 import com.udindev.ngaos.utils.AppUtils.loadImageFromUrl
 import java.util.*
 
 class DaftarKelasAdapter(private val activity: Activity) : RecyclerView.Adapter<DaftarKelasAdapter.FavoriteViewHolder>(), Filterable {
-    private val listItem = ArrayList<Kelas>()
-    private val listItemFiltered = ArrayList<Kelas>()
-    var data: ArrayList<Kelas>?
+    private val listItem = ArrayList<Data>()
+    private val listItemFiltered = ArrayList<Data>()
+    var data: ArrayList<Data>?
         get() = listItem
         set(listItem) {
             this.listItem.clear()
@@ -29,7 +30,7 @@ class DaftarKelasAdapter(private val activity: Activity) : RecyclerView.Adapter<
             notifyDataSetChanged()
         }
 
-    var countryFilterList = ArrayList<Kelas>()
+    var countryFilterList = ArrayList<Data>()
     init {
         countryFilterList = data!!
     }
@@ -57,9 +58,9 @@ class DaftarKelasAdapter(private val activity: Activity) : RecyclerView.Adapter<
         private var imgPhoto: ImageView = itemView.findViewById(R.id.img_kelas)
         private var tvName: TextView = itemView.findViewById(R.id.txt_nama_kelas)
         private var tv_pengajar : TextView = itemView.findViewById(R.id.textView2)
-        fun bind(item: Kelas) {
+        fun bind(item: Data) {
             tvName.text = item.namaKelas
-            loadImageFromUrl(imgPhoto, item.photo)
+            loadImageFromUrl(imgPhoto, item.fotoKelas)
         }
     }
 
@@ -70,7 +71,7 @@ class DaftarKelasAdapter(private val activity: Activity) : RecyclerView.Adapter<
                 countryFilterList = if (charSearch.isEmpty()) {
                     data!!
                 } else {
-                    val resultList = ArrayList<Kelas>()
+                    val resultList = ArrayList<Data>()
                     for (row in data!!) {
                         if (row.namaKelas!!.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
                             resultList.add(row)
@@ -84,7 +85,7 @@ class DaftarKelasAdapter(private val activity: Activity) : RecyclerView.Adapter<
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                countryFilterList = results?.values as ArrayList<Kelas>
+                countryFilterList = results?.values as ArrayList<Data>
                 notifyDataSetChanged()
             }
 

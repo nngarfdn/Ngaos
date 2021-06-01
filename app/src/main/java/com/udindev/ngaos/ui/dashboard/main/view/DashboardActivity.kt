@@ -21,7 +21,7 @@ import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.nanang.lokasi.MySimpleLocation
-import com.nanang.retrocoro.ui.base.SholatViewModelFactory
+import com.nanang.retrocoro.ui.base.ViewModelFactory
 import com.nanang.retrocoro.ui.main.viewmodel.SholatViewModel
 import com.schibstedspain.leku.LATITUDE
 import com.schibstedspain.leku.LONGITUDE
@@ -166,7 +166,7 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
 
     private fun setupViewModel() {
         sholatViewModel = ViewModelProviders.of(
-                this, SholatViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
+                this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
         ).get(SholatViewModel::class.java)
 
         loggedInViewModel = ViewModelProviders.of(this, LoggedViewModelFactory(this.application)).get(

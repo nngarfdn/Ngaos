@@ -1,6 +1,7 @@
 package com.udindev.ngaos.api
 
 import com.udindev.ngaos.data.response.ResponsePrayerTime
+import com.udindev.ngaos.data.response.kelas.KelasResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -12,5 +13,8 @@ interface ApiService {
             @Query("longitude") longitude : String,
             @Query("date") date : String
     ): ResponsePrayerTime
+
+    @GET("kelas")
+    suspend fun getAllKelas(): KelasResponse
 
 }

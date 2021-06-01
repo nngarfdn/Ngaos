@@ -30,12 +30,13 @@ class ProfileActivity : AppCompatActivity() {
         setupViewModel()
         setupAuthObservers()
 
-        binding = ActivityProfileBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
         binding.pilihBahasa.setOnClickListener{
             val langIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
             startActivity(langIntent)
         }
+
+        binding.tentangAplikasi.setOnClickListener { startActivity(Intent(this, TentangActivity::class.java)) }
 
         binding.btnLogout.setOnClickListener {
 
@@ -48,7 +49,6 @@ class ProfileActivity : AppCompatActivity() {
                         startActivity(Intent(this, LoginActivity::class.java))
                     }
                     .create().show()
-
         }
     }
 

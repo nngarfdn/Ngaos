@@ -21,8 +21,6 @@
         android:background="@color/green"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="parent" >
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
@@ -65,11 +63,13 @@
                   android:layout_marginBottom="4dp"
                   android:layout_gravity="center"
                   android:gravity="center"
-                  android:orientation="horizontal">
+                  android:orientation="horizontal"
+                  tools:ignore="UseCompoundDrawables">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/location_green"/>
+                    android:src="@drawable/location_green"
+                    tools:ignore="ContentDescription" />
                   <TextView
                       android:id="@+id/txt_location"
                       android:text="@string/pilih_lokasi"
@@ -91,7 +91,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/bg_search"
         android:hint="@string/cari_kelas"
-        tools:ignore="Autofill"
+        tools:ignore="Autofill,RtlSymmetry,SmallSp,TextFields"
         android:paddingStart="8dp"
         android:textSize="10sp"
         android:focusable="false"
@@ -108,7 +108,8 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/profile_selector"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -116,7 +117,8 @@
         android:layout_height="0dp"
         android:src="@drawable/ic_ilustrasi_home"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="@+id/cardView" />
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/salam"
