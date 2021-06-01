@@ -1,6 +1,11 @@
 package com.udindev.ngaos.data.response.kelas
 
+
+import com.google.gson.annotations.SerializedName
+
 data class KelasResponse(
-    var `data`: List<Data>? = null,
-    var success: String? = null
+    @SerializedName("data")
+    val `data`: List<Data>? = null,
+    @SerializedName("success")
+    val success: String? = null
 )

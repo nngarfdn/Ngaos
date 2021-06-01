@@ -11,7 +11,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.udindev.ngaos.R
-import com.udindev.ngaos.data.model.Kelas
 import com.udindev.ngaos.data.response.kelas.Data
 import com.udindev.ngaos.ui.kelas.DetailActivity
 import com.udindev.ngaos.utils.AppUtils.loadImageFromUrl

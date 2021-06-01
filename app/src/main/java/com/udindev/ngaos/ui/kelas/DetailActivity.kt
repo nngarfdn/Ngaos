@@ -2,9 +2,8 @@ package com.udindev.ngaos.ui.kelas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.udindev.ngaos.utils.AppUtils.loadImageFromUrl
-import com.udindev.ngaos.data.model.Kelas
 import com.udindev.ngaos.data.response.kelas.Data
+import com.udindev.ngaos.utils.AppUtils.loadImageFromUrl
 import com.udindev.ngaos.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {

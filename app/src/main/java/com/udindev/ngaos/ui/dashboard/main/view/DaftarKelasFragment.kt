@@ -1,22 +1,16 @@
 package com.udindev.ngaos.ui.dashboard.main.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nanang.retrocoro.ui.base.ViewModelFactory
-import com.udindev.ngaos.R
 import com.udindev.ngaos.api.ApiHelper
 import com.udindev.ngaos.api.RetrofitBuilder
 import com.udindev.ngaos.data.model.Kelas
-import com.udindev.ngaos.data.response.Datetime
-import com.udindev.ngaos.data.response.Times
 import com.udindev.ngaos.data.response.kelas.Data
 import com.udindev.ngaos.databinding.FragmentDaftarKelasBinding
 import com.udindev.ngaos.ui.dashboard.main.adapter.DaftarKelasAdapter
