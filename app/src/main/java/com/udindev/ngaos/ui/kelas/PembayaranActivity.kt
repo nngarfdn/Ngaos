@@ -1,5 +1,6 @@
 package com.udindev.ngaos.ui.kelas
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -21,8 +22,9 @@ class PembayaranActivity : AppCompatActivity() {
     private var firebaseAuth: FirebaseAuth? = null
     private var firebaseUser: FirebaseUser? = null
     private var loadingDialog: LoadingDialog? = null
-
     private lateinit var binding : ActivityPembayaranBinding
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPembayaranBinding.inflate(layoutInflater)
@@ -39,6 +41,40 @@ class PembayaranActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(Intent.createChooser(intent, "Unggah foto"), RC_PICK_IMAGE)
+        }
+
+        binding.txtPetunjukBayar.text =
+            "Diisi petunjuk penbayaran Gopay \n" +
+                    "1. langkah pertama \n" +
+                    "2. langkah selanjutnya \n" +
+                    "3. langkah dst"
+
+        setupPetuntukPembayaran()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setupPetuntukPembayaran() {
+        binding.radioGroup1.setOnCheckedChangeListener { _, id ->
+            if (id == R.id.radioSubuh) binding.txtPetunjukBayar.text =
+                "Diisi petunjuk penbayaran Gopay \n" +
+                        "1. langkah pertama \n" +
+                        "2. langkah selanjutnya" +
+                        "3. langkah dst"
+            if (id == R.id.radioDzuhur) binding.txtPetunjukBayar.text =
+                "Diisi petunjuk penbayaran OVO \n" +
+                        "1. langkah pertama \n" +
+                        "2. langkah selanjutnya\n" +
+                        "3. langkah dst"
+            if (id == R.id.radioAshar) binding.txtPetunjukBayar.text =
+                "Diisi petunjuk penbayaran Mandiri \n" +
+                        "1. langkah pertama \n" +
+                        "2. langkah selanjutnya\n" +
+                        "3. langkah dst"
+            if (id == R.id.radioBCA) binding.txtPetunjukBayar.text =
+                "Diisi petunjuk penbayaran BCA \n" +
+                        "1. langkah pertama \n" +
+                        "2. langkah selanjutnya\n" +
+                        "3. langkah dst"
         }
     }
 

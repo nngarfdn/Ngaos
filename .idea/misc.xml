@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_pembayaran.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_daftar_kelas.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_kelas_diikuti.xml" value="0.1" />
