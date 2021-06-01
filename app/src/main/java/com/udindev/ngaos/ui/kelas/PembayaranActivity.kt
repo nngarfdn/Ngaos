@@ -44,10 +44,10 @@ class PembayaranActivity : AppCompatActivity() {
         }
 
         binding.txtPetunjukBayar.text =
-            "Diisi petunjuk penbayaran Gopay \n" +
-                    "1. langkah pertama \n" +
-                    "2. langkah selanjutnya \n" +
-                    "3. langkah dst"
+            "Petunjuk Penbayaran Gopay \n" +
+                    "1. Klik Bayar dengan GO-PAY. \n" +
+                    "2. Aplikasi GO-JEK akan terbuka secara otomatis untuk melakukan pembayaran. \n" +
+                    "3. Periksa rincian pembayaran Anda lalu klik Pay dan transaksi Anda selesai."
 
         setupPetuntukPembayaran()
     }
@@ -56,25 +56,31 @@ class PembayaranActivity : AppCompatActivity() {
     private fun setupPetuntukPembayaran() {
         binding.radioGroup1.setOnCheckedChangeListener { _, id ->
             if (id == R.id.radioSubuh) binding.txtPetunjukBayar.text =
-                "Diisi petunjuk penbayaran Gopay \n" +
-                        "1. langkah pertama \n" +
-                        "2. langkah selanjutnya" +
-                        "3. langkah dst"
+                "Petunjuk Penbayaran Gopay \n" +
+                        "1. Klik Bayar dengan GO-PAY. \n" +
+                        "2. Aplikasi GO-JEK akan terbuka secara otomatis untuk melakukan pembayaran. \n" +
+                        "3. Periksa rincian pembayaran Anda lalu klik Pay dan transaksi Anda selesai."
             if (id == R.id.radioDzuhur) binding.txtPetunjukBayar.text =
-                "Diisi petunjuk penbayaran OVO \n" +
-                        "1. langkah pertama \n" +
-                        "2. langkah selanjutnya\n" +
-                        "3. langkah dst"
+                "Petunjuk Penbayaran OVO \n" +
+                        "1. Masukkan nomor HP Anda yang terdaftar di OVO. \n" +
+                        "2. Tekan notifikasi OVO yang akan muncul setelah memasukkan no. HP Anda di atas. \n" +
+                        "3. Periksa rincian pembayaran. \n"
+                        "4. Selesaikan pembayaran di aplikasi OVO."
             if (id == R.id.radioAshar) binding.txtPetunjukBayar.text =
-                "Diisi petunjuk penbayaran Mandiri \n" +
-                        "1. langkah pertama \n" +
-                        "2. langkah selanjutnya\n" +
-                        "3. langkah dst"
+                "Petunjuk Penbayaran Bank Mandiri \n" +
+                        "1. Pada menu utama, pilih Bayar/Beli. \n" +
+                        "2. Pilih Lainnya. \n" +
+                        "3. Pilih Multi Payment. \n" +
+                        "4. Masukkan 70012 (kode preusahaan Midtrans) lalu tekan Benar. \n" +
+                        "5. Masukkan kode pembayaran Anda lalu tekan Benar. \n" +
+                        "6. Pada halaman konfirmasi akan muncul detail pembayaran Anda. Jika informasi telah sesuai tekan Ya."
             if (id == R.id.radioBCA) binding.txtPetunjukBayar.text =
-                "Diisi petunjuk penbayaran BCA \n" +
-                        "1. langkah pertama \n" +
-                        "2. langkah selanjutnya\n" +
-                        "3. langkah dst"
+                "Petunjuk Penbayaran Bank BCA \n" +
+                        "1. Masukkan kartu, pilih bahasa, dan masukkan PIN sesuai petunjuk di layar. \n" +
+                        "2. Pada menu utama, pilih Transaksi Lainnya. \n" +
+                        "3. Pilih Transfer dan pilih ke rekening BCA. \n" +
+                        "4. Masukkan nominal transfer sesuai dengan total tagihan transaksi di aplikasi Ngaos. \n" +
+                        "5.\tMasukkan nomor rekening BCA yang tertera di aplikasi Ngaos sebagai tujuan transfer."
         }
     }
 
