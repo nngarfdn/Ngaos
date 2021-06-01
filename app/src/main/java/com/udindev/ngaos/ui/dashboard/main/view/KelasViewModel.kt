@@ -15,4 +15,13 @@ class KelasViewModel(private val mainRepository: KelasRepository): ViewModel() {
             emit(Resource.error(data = null, message = e.message ?: "Error Occurred!"))
         }
     }
+
+    fun  getKelasDiikuti(id : String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = mainRepository.getKelasDiikuti(id)))
+        }catch (e : Exception) {
+            emit(Resource.error(data = null, message = e.message ?: "Error Occurred!"))
+        }
+    }
 }

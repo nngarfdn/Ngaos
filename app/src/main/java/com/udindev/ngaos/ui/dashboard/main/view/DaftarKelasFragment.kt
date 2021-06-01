@@ -21,7 +21,7 @@ class DaftarKelasFragment : Fragment() {
     private lateinit var binding : FragmentDaftarKelasBinding
     private lateinit var adapter : DaftarKelasAdapter
     private lateinit var viewModel: KelasViewModel
-    private var listKelas : ArrayList<Kelas> = arrayListOf()
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

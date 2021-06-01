@@ -29,4 +29,6 @@ object RetrofitBuilder {
 
     val apiServiceKelas : ApiService = getRetrofitKelas().create(ApiService::class.java)
 
+    var apiServiceDiikuti : ApiService = getRetrofitKelas().create(ApiService::class.java)
+
 }

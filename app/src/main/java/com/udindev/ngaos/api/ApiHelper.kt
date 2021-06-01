@@ -6,4 +6,6 @@ class ApiHelper(private val apiService: ApiService) {
     = apiService.getTimeFromFatimah(latitude,longitude, date)
 
     suspend fun  getAllKelas() = apiService.getAllKelas()
+
+    suspend fun getKelasDiikuti(id : String) = apiService.getKelasDiikuti(id)
 }

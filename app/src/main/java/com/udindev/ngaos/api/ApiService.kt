@@ -1,8 +1,10 @@
 package com.udindev.ngaos.api
 
 import com.udindev.ngaos.data.response.ResponsePrayerTime
+import com.udindev.ngaos.data.response.diikuti.ResponseDiikuti
 import com.udindev.ngaos.data.response.kelas.KelasResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -16,5 +18,10 @@ interface ApiService {
 
     @GET("kelas")
     suspend fun getAllKelas(): KelasResponse
+
+    @GET("diikuti/{id}")
+    suspend fun getKelasDiikuti(
+        @Path("id") id : String
+    ): ResponseDiikuti
 
 }
