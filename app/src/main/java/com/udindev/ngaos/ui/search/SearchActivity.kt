@@ -2,17 +2,27 @@ package com.udindev.ngaos.ui.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.nanang.retrocoro.ui.base.ViewModelFactory
 import com.udindev.ngaos.R
+import com.udindev.ngaos.api.ApiHelper
+import com.udindev.ngaos.api.RetrofitBuilder
 import com.udindev.ngaos.data.model.Kelas
+import com.udindev.ngaos.data.response.kelas.Data
 import com.udindev.ngaos.databinding.ActivitySearchBinding
+import com.udindev.ngaos.databinding.FragmentDaftarKelasBinding
 import com.udindev.ngaos.ui.dashboard.main.adapter.DaftarKelasAdapter
+import com.udindev.ngaos.ui.dashboard.main.view.KelasViewModel
+import com.udindev.ngaos.utils.Status
 
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivitySearchBinding
     private lateinit var adapter : DaftarKelasAdapter
+    private lateinit var viewModel: KelasViewModel
     private var listKelas : ArrayList<Kelas> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,14 +33,14 @@ class SearchActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        adapter = DaftarKelasAdapter(this)
-
         binding.rvDaftarKelas.layoutManager = LinearLayoutManager(this)
         binding.rvDaftarKelas.setHasFixedSize(true)
         adapter = DaftarKelasAdapter(this)
         adapter.notifyDataSetChanged()
         binding.rvDaftarKelas.adapter = adapter
-//        addList()
+
+        setupViewModel()
+        setupObservers()
 
         binding.editText.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -65,6 +75,38 @@ class SearchActivity : AppCompatActivity() {
 //
 //        adapter.data = listKelas
 //    }
+
+    private fun setupViewModel() {
+        viewModel = ViewModelProviders.of(
+            this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiServiceKelas))
+        ).get(KelasViewModel::class.java)
+    }
+
+    private fun setupObservers() {
+        viewModel.getAllKelas().observe( this, {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        resource.data?.let { kelas ->
+                            binding.progressBar.visibility = View.INVISIBLE
+                            adapter = DaftarKelasAdapter(this)
+                            adapter.notifyDataSetChanged()
+                            adapter.data = kelas.data as java.util.ArrayList<Data>?
+                            binding.rvDaftarKelas.adapter = adapter
+
+
+                        }
+                    }
+                    Status.ERROR -> {
+                        binding.progressBar.visibility = View.INVISIBLE
+                    }
+                    Status.LOADING -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                    }
+                }
+            }
+        })
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

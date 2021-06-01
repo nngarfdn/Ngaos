@@ -8,19 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.udindev.ngaos.data.model.Kelas
+import com.udindev.ngaos.data.response.kelas.Data
 import com.udindev.ngaos.databinding.FragmentPesanSekarangBinding
 
 class PesanSekarangFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding : FragmentPesanSekarangBinding
-    private var kelas : Kelas? = null
+    private var kelas : Data? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentPesanSekarangBinding.inflate(inflater, container, false)
         kelas = arguments?.getParcelable(DetailActivity.EXTRA_KELAS)
         binding.txtNamaKelLanjutan.text = kelas?.namaKelas
-        loadImageFromUrl(binding.imgKelas, kelas?.photo)
+        loadImageFromUrl(binding.imgKelas, kelas?.fotoKelas)
 
         binding.btnBergabung.setOnClickListener{startActivity(Intent(context, PembayaranActivity::class.java))}
         binding.imageView8.setOnClickListener { dismiss() }
