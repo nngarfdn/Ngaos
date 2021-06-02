@@ -1,10 +1,10 @@
 package com.udindev.ngaos.ui.kelas
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.udindev.ngaos.data.response.kelas.Data
-import com.udindev.ngaos.utils.AppUtils.loadImageFromUrl
 import com.udindev.ngaos.databinding.ActivityDetailBinding
+import com.udindev.ngaos.utils.AppUtils.loadImageFromUrl
 
 class DetailActivity : AppCompatActivity() {
 
@@ -12,6 +12,7 @@ class DetailActivity : AppCompatActivity() {
         const val EXTRA_KELAS = "kelas"
     }
     private lateinit var binding : ActivityDetailBinding
+
     private lateinit var kelas : Data
 
     override fun onCreate(savedInstanceState: Bundle?) {

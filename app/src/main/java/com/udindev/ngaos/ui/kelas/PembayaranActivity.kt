@@ -3,14 +3,22 @@ package com.udindev.ngaos.ui.kelas
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.nanang.retrocoro.ui.base.ViewModelFactory
 import com.udindev.ngaos.R
+import com.udindev.ngaos.api.ApiHelper
+import com.udindev.ngaos.api.RetrofitBuilder
+import com.udindev.ngaos.callback.OnImageUploadCallback
 import com.udindev.ngaos.databinding.ActivityPembayaranBinding
 import com.udindev.ngaos.utils.AppUtils.loadImageFromUrl
 import com.udindev.ngaos.utils.costumview.LoadingDialog
+import java.util.*
 
 class PembayaranActivity : AppCompatActivity() {
 
@@ -23,6 +31,7 @@ class PembayaranActivity : AppCompatActivity() {
     private var firebaseUser: FirebaseUser? = null
     private var loadingDialog: LoadingDialog? = null
     private lateinit var binding : ActivityPembayaranBinding
+    private lateinit var viewModel: PembayaranViewModel
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,10 +46,29 @@ class PembayaranActivity : AppCompatActivity() {
         firebaseUser = firebaseAuth!!.currentUser
         loadingDialog = LoadingDialog(this, false)
 
+        setupViewModel()
+
         binding.btnPilihGambar.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(Intent.createChooser(intent, "Unggah foto"), RC_PICK_IMAGE)
+        }
+
+        binding.btnBergabung.setOnClickListener {
+            val id = firebaseUser?.uid
+            val fileName: String = binding.radioGroup1.checkedRadioButtonId.toString() + Calendar.getInstance().time + ".jpeg"
+            if (uriImage == null) {
+                Toast.makeText(this, "Masukan Bukti Pembayaran", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+
+
+            viewModel.uploadImage(this, id, uriImage, fileName, object : OnImageUploadCallback{
+                override fun onSuccess(imageUrl: String?) {
+                    Log.d("Upload Image", "onSuccess: $imageUrl")
+                }
+            })
         }
 
         binding.txtPetunjukBayar.text =
@@ -50,6 +78,12 @@ class PembayaranActivity : AppCompatActivity() {
                     "3. Periksa rincian pembayaran Anda lalu klik Pay dan transaksi Anda selesai."
 
         setupPetuntukPembayaran()
+    }
+
+    private fun setupViewModel() {
+        viewModel = ViewModelProviders.of(
+            this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiServiceKelas))
+        ).get(PembayaranViewModel::class.java)
     }
 
     @SuppressLint("SetTextI18n")

@@ -1,16 +1,15 @@
 package com.udindev.ngaos.ui.dashboard.main.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nanang.retrocoro.ui.base.ViewModelFactory
 import com.udindev.ngaos.api.ApiHelper
 import com.udindev.ngaos.api.RetrofitBuilder
-import com.udindev.ngaos.data.model.Kelas
 import com.udindev.ngaos.data.response.kelas.Data
 import com.udindev.ngaos.databinding.FragmentDaftarKelasBinding
 import com.udindev.ngaos.ui.dashboard.main.adapter.DaftarKelasAdapter
@@ -61,6 +60,7 @@ class DaftarKelasFragment : Fragment() {
                     }
                     Status.ERROR -> {
                         binding.progressBar.visibility = View.INVISIBLE
+
                     }
                     Status.LOADING -> {
                         binding.progressBar.visibility = View.VISIBLE
