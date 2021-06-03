@@ -8,13 +8,14 @@ import android.provider.MediaStore
 import android.util.Log
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.udindev.ngaos.api.ApiHelper
 import com.udindev.ngaos.callback.OnImageUploadCallback
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 
 
-class PembayaranRepository {
+class PembayaranRepository(private val apiHelper : ApiHelper) {
 
     companion object{
         private const val TAG = "PembayaranRepository"
@@ -23,7 +24,15 @@ class PembayaranRepository {
 
     private val storage = FirebaseStorage.getInstance()
 
-    fun uploadImage(context: Context?, portfolioId: String, uri: Uri?, fileName: String, callback: OnImageUploadCallback) { // Investor
+    suspend fun uploadPembayaran ( idUser: String,
+                                  namaPembayaran: String,
+                                  status: String,
+                                  totalPembayaran: Int,
+                                 jenisPembayaran: String,
+                                  buktiPembayaran: String)
+            = apiHelper.pembayaran(idUser, namaPembayaran, status, totalPembayaran, jenisPembayaran, buktiPembayaran)
+
+    fun uploadImage(context: Context?, portfolioId: String, uri: Uri?, fileName: String, callback: OnImageUploadCallback)  { // Investor
         var image: ByteArray? = context?.let { convertUriToByteArray(it, uri) }
         image = getCompressedByteArray(image, true)
         val reference: StorageReference = storage.reference.child("$FOLDER_BUKU/$portfolioId/$fileName")

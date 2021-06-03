@@ -17,6 +17,7 @@ import com.udindev.ngaos.api.RetrofitBuilder
 import com.udindev.ngaos.callback.OnImageUploadCallback
 import com.udindev.ngaos.databinding.ActivityPembayaranBinding
 import com.udindev.ngaos.utils.AppUtils.loadImageFromUrl
+import com.udindev.ngaos.utils.Status
 import com.udindev.ngaos.utils.costumview.LoadingDialog
 import java.util.*
 
@@ -24,6 +25,7 @@ class PembayaranActivity : AppCompatActivity() {
 
     companion object{
         private const val RC_PICK_IMAGE = 100
+        private const val TAG = "PembayaranActivity"
     }
 
     private var uriImage: Uri? = null
@@ -62,15 +64,46 @@ class PembayaranActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+//            viewModel.uploadPembayaran(
+//                "idnyananang",
+//                "nanang",
+//                "pending",
+//                20000,
+//                "gopay",
+//                "test"
+//            ).observe(this, {
+//                it?.let { resource ->
+//                    when(resource.status){
+//                        Status.SUCCESS -> {
+//                            Log.d(TAG, "onCreate: upload succes")
+//                        }
+//
+//                        Status.LOADING -> {
+//                            Log.d(TAG, "onCreate: upload loading")
+//                        }
+//
+//                        Status.ERROR -> {
+//                            Log.d(TAG, "onCreate: upload error")
+//                        }
+//
+//                    }
+//                }
+//            })
 
 
             viewModel.uploadImage(this, id, uriImage, fileName, object : OnImageUploadCallback{
                 override fun onSuccess(imageUrl: String?) {
+                    uploadToServer(imageUrl)
                     Log.d("Upload Image", "onSuccess: $imageUrl")
                     Toast.makeText(applicationContext, "Berhasil", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(applicationContext, TerimakasihActivity::class.java))
+
                 }
             })
+
+
+
+
         }
 
         binding.txtPetunjukBayar.text =
@@ -82,9 +115,38 @@ class PembayaranActivity : AppCompatActivity() {
         setupPetuntukPembayaran()
     }
 
+    private fun uploadToServer(imageUrl: String?) {
+        Log.d(TAG, "uploadToServer: $imageUrl")
+        viewModel.uploadPembayaran(
+            "idnyananang",
+            "nanang",
+            "pending",
+            20000,
+            "gopay",
+            imageUrl!!
+        ).observe(this, {
+            it?.let { resource ->
+                    when(resource.status){
+                        Status.SUCCESS -> {
+                            Log.d(TAG, "onCreate: upload succes")
+                        }
+
+                        Status.LOADING -> {
+                            Log.d(TAG, "onCreate: upload loading")
+                        }
+
+                        Status.ERROR -> {
+                            Log.d(TAG, "onCreate: upload error")
+                        }
+
+                    }
+                }
+        })
+    }
+
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(
-            this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiServiceKelas))
+            this, ViewModelFactory(ApiHelper(RetrofitBuilder.apiServicePembayaran))
         ).get(PembayaranViewModel::class.java)
     }
 

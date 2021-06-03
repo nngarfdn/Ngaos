@@ -21,7 +21,7 @@ class ViewModelFactory(private val apiHelper: ApiHelper) : ViewModelProvider.Fac
         }
 
         if (modelClass.isAssignableFrom(PembayaranViewModel::class.java)){
-            return PembayaranViewModel(PembayaranRepository()) as T
+            return PembayaranViewModel(PembayaranRepository(apiHelper)) as T
         }
         throw IllegalArgumentException("Unknown class name")
     }

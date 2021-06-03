@@ -3,9 +3,8 @@ package com.udindev.ngaos.api
 import com.udindev.ngaos.data.response.ResponsePrayerTime
 import com.udindev.ngaos.data.response.diikuti.ResponseDiikuti
 import com.udindev.ngaos.data.response.kelas.KelasResponse
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import com.udindev.ngaos.data.response.pembayaran.ResponsePostPembayaran
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -23,5 +22,16 @@ interface ApiService {
     suspend fun getKelasDiikuti(
         @Path("id") id : String
     ): ResponseDiikuti
+
+    @FormUrlEncoded
+    @POST("pembayaran")
+    suspend fun uploadPembayaran(
+        @Field("idUser") idUser: String,
+        @Field("namaPembayaran") namaPembayaran: String,
+        @Field("status") status: String,
+        @Field("totalPembayaran") totalPembayaran: Int,
+        @Field("jenisPembayaran") jenisPembayaran: String,
+        @Field("buktiPembayaran") buktiPembayaran: String
+    ) : ResponsePostPembayaran
 
 }

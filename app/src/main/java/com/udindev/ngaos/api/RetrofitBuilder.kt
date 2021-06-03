@@ -31,4 +31,6 @@ object RetrofitBuilder {
 
     var apiServiceDiikuti : ApiService = getRetrofitKelas().create(ApiService::class.java)
 
+    var apiServicePembayaran : ApiService = getRetrofitKelas().create(ApiService::class.java)
+
 }
