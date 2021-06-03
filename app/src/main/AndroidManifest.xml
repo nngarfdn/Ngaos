@@ -20,6 +20,9 @@
         android:theme="@style/Theme.Ngaos"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.kelas.DetailKelasDiikuti"
+            android:exported="true" />
+        <activity
             android:name=".ui.kelas.TerimakasihActivity"
             android:exported="true" />
         <activity android:name=".ui.profile.TentangActivity" />

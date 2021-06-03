@@ -12,8 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.udindev.ngaos.R
 import com.udindev.ngaos.data.response.diikuti.Kela
-import com.udindev.ngaos.data.response.kelas.Data
-import com.udindev.ngaos.ui.kelas.DetailActivity
+import com.udindev.ngaos.ui.kelas.DetailKelasDiikuti
 import com.udindev.ngaos.utils.AppUtils.loadImageFromUrl
 import java.util.*
 
@@ -44,8 +43,8 @@ class DaftarDiikutiAdapter(private val activity: Activity) : RecyclerView.Adapte
         val item = countryFilterList[position]
         holder.bind(item)
         holder.itemView.setOnClickListener {
-            val intent = Intent(activity, DetailActivity::class.java)
-            intent.putExtra(DetailActivity.EXTRA_KELAS, item)
+            val intent = Intent(activity, DetailKelasDiikuti::class.java)
+            intent.putExtra(DetailKelasDiikuti.EXTRA_KELAS, item)
             activity.startActivity(intent)
         }
     }

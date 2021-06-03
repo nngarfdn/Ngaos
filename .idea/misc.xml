@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_terimakasih.xml" value="0.1398148148148148" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_detail_kelas_diikuti.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_pembayaran.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_terimakasih.xml" value="0.2" />
