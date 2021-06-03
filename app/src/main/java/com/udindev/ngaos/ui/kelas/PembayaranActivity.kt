@@ -67,6 +67,8 @@ class PembayaranActivity : AppCompatActivity() {
             viewModel.uploadImage(this, id, uriImage, fileName, object : OnImageUploadCallback{
                 override fun onSuccess(imageUrl: String?) {
                     Log.d("Upload Image", "onSuccess: $imageUrl")
+                    Toast.makeText(applicationContext, "Berhasil", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(applicationContext, TerimakasihActivity::class.java))
                 }
             })
         }
