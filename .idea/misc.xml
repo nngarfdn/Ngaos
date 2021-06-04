@@ -7,10 +7,11 @@
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_detail_kelas_diikuti.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_pembayaran.xml" value="0.14" />
-        <entry key="app/src/main/res/layout/activity_search.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_terimakasih.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_daftar_kelas.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_kelas_diikuti.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_kelas_diikuti.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_pesan_sekarang.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_kelas.xml" value="0.22" />
       </map>
     </option>

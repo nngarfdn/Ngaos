@@ -1,22 +1,23 @@
 package com.udindev.ngaos.ui.search
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nanang.retrocoro.ui.base.ViewModelFactory
-import com.udindev.ngaos.R
 import com.udindev.ngaos.api.ApiHelper
 import com.udindev.ngaos.api.RetrofitBuilder
 import com.udindev.ngaos.data.model.Kelas
 import com.udindev.ngaos.data.response.kelas.Data
 import com.udindev.ngaos.databinding.ActivitySearchBinding
-import com.udindev.ngaos.databinding.FragmentDaftarKelasBinding
 import com.udindev.ngaos.ui.dashboard.main.adapter.DaftarKelasAdapter
 import com.udindev.ngaos.ui.dashboard.main.view.KelasViewModel
 import com.udindev.ngaos.utils.Status
+
+
+
 
 class SearchActivity : AppCompatActivity() {
 
@@ -39,6 +40,8 @@ class SearchActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
         binding.rvDaftarKelas.adapter = adapter
 
+
+
         setupViewModel()
         setupObservers()
 
@@ -50,7 +53,12 @@ class SearchActivity : AppCompatActivity() {
                 adapter.filter.filter(newText)
                 return false
             }
+
+            
         })
+
+
+
     }
 
 //    private fun addList(){
@@ -94,6 +102,9 @@ class SearchActivity : AppCompatActivity() {
                             adapter.data = kelas.data as java.util.ArrayList<Data>?
                             binding.rvDaftarKelas.adapter = adapter
 
+                            if (adapter.data?.isEmpty() == true){
+                                binding.progressBar.visibility = View.VISIBLE
+                            }
 
                         }
                     }

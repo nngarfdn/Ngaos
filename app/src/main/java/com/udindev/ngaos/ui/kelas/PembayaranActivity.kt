@@ -16,6 +16,7 @@ import com.udindev.ngaos.R
 import com.udindev.ngaos.api.ApiHelper
 import com.udindev.ngaos.api.RetrofitBuilder
 import com.udindev.ngaos.callback.OnImageUploadCallback
+import com.udindev.ngaos.data.response.kelas.Data
 import com.udindev.ngaos.databinding.ActivityPembayaranBinding
 import com.udindev.ngaos.utils.AppUtils.loadImageFromUrl
 import com.udindev.ngaos.utils.Status
@@ -36,6 +37,7 @@ class PembayaranActivity : AppCompatActivity() {
     private var loadingDialog: LoadingDialog? = null
     private lateinit var binding : ActivityPembayaranBinding
     private lateinit var viewModel: PembayaranViewModel
+    private lateinit var kelas : Data
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +48,12 @@ class PembayaranActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
+        val i = intent.extras
+        if (i != null){
+            kelas = i.getParcelable(DetailActivity.EXTRA_KELAS)!!
+            binding.txtHarga.text = kelas.biaya.toString()
+        }
+
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseUser = firebaseAuth!!.currentUser
         loadingDialog = LoadingDialog(this, false)
@@ -54,6 +62,7 @@ class PembayaranActivity : AppCompatActivity() {
 
         binding.progressBar.visibility = View.INVISIBLE
         binding.tvTunggu.visibility = View.INVISIBLE
+
 
         binding.btnPilihGambar.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
@@ -84,8 +93,6 @@ class PembayaranActivity : AppCompatActivity() {
             })
 
 
-
-
         }
 
         binding.txtPetunjukBayar.text =
@@ -100,43 +107,47 @@ class PembayaranActivity : AppCompatActivity() {
     private fun uploadToServer(imageUrl: String?) {
         Log.d(TAG, "uploadToServer: $imageUrl")
         firebaseUser?.let {
-            viewModel.uploadPembayaran(
-                it.uid,
-                it.displayName,
-                "pending",
-                20000,
-                "gopay",
-                imageUrl!!
-            ).observe(this, {
-                it?.let { resource ->
-                    when(resource.status){
-                        Status.SUCCESS -> {
+            kelas.biaya?.let { it1 ->
+                kelas.namaKelas?.let { it2 ->
+                    viewModel.uploadPembayaran(
+                        it.uid,
+                        it.displayName,
+                        "pending",
+                        it1,
+                        it2,
+                        imageUrl!!
+                    ).observe(this, {
+                        it?.let { resource ->
+                            when(resource.status){
+                                Status.SUCCESS -> {
 
-                            Log.d(TAG, "onCreate: upload succes")
-                            startActivity(Intent(this, TerimakasihActivity::class.java))
+                                    Log.d(TAG, "onCreate: upload succes")
+                                    startActivity(Intent(this, TerimakasihActivity::class.java))
+                                }
+
+                                Status.LOADING -> {
+                                    binding.progressBar.visibility = View.VISIBLE
+                                    binding.tvTunggu.visibility = View.VISIBLE
+                                    binding.btnPilihGambar.visibility = View.INVISIBLE
+                                    binding.imageView10.visibility = View.INVISIBLE
+                                    Log.d(TAG, "onCreate: upload loading")
+                                }
+
+                                Status.ERROR -> {
+                                    Log.d(TAG, "onCreate: upload error")
+                                    binding.imageView10.visibility = View.VISIBLE
+                                    binding.progressBar.visibility = View.INVISIBLE
+                                    binding.tvTunggu.visibility = View.INVISIBLE
+                                    binding.btnPilihGambar.visibility = View.VISIBLE
+
+
+                                }
+
+                            }
                         }
-
-                        Status.LOADING -> {
-                            binding.progressBar.visibility = View.VISIBLE
-                            binding.tvTunggu.visibility = View.VISIBLE
-                            binding.btnPilihGambar.visibility = View.INVISIBLE
-                            binding.imageView10.visibility = View.INVISIBLE
-                            Log.d(TAG, "onCreate: upload loading")
-                        }
-
-                        Status.ERROR -> {
-                            Log.d(TAG, "onCreate: upload error")
-                            binding.imageView10.visibility = View.VISIBLE
-                            binding.progressBar.visibility = View.INVISIBLE
-                            binding.tvTunggu.visibility = View.INVISIBLE
-                            binding.btnPilihGambar.visibility = View.VISIBLE
-
-
-                        }
-
-                    }
+                    })
                 }
-            })
+            }
         }
     }
 

@@ -14,6 +14,7 @@ class DetailKelasDiikuti : AppCompatActivity() {
     private lateinit var binding: ActivityDetailKelasDiikutiBinding
     private lateinit var kelas: Kela
 
+
     companion object{
         const val EXTRA_KELAS = "diikuti"
     }
@@ -25,6 +26,9 @@ class DetailKelasDiikuti : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+
+
         val i = intent.extras
         if (i != null) {
             kelas = i.getParcelable(EXTRA_KELAS)!!

@@ -17,10 +17,11 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_fileName="load.json"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="4dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginBottom="200dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="load.json"
+        app:lottie_loop="true" />
 
 </RelativeLayout>
