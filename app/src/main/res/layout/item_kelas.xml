@@ -43,27 +43,17 @@
             app:layout_constraintStart_toEndOf="@+id/cv_image"
             app:layout_constraintTop_toTopOf="@+id/cv_image" />
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_pengajar"
-            app:layout_constraintBottom_toBottomOf="@+id/textView2"
-            app:layout_constraintStart_toStartOf="@+id/txt_nama_kelas"
-            app:layout_constraintTop_toTopOf="@+id/textView2" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxWidth="150dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat"
+            android:maxWidth="150dp"
             android:maxLines="2"
-            android:text="Habib Husein Ja'far
-Al-Hadar"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            android:text="Description"
+            app:layout_constraintStart_toStartOf="@+id/txt_nama_kelas"
             app:layout_constraintTop_toBottomOf="@+id/txt_nama_kelas" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

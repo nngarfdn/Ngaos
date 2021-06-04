@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
@@ -21,6 +22,7 @@ import com.udindev.ngaos.utils.Status
 import com.udindev.ngaos.utils.costumview.LoadingDialog
 import java.util.*
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class PembayaranActivity : AppCompatActivity() {
 
     companion object{
@@ -50,6 +52,9 @@ class PembayaranActivity : AppCompatActivity() {
 
         setupViewModel()
 
+        binding.progressBar.visibility = View.INVISIBLE
+        binding.tvTunggu.visibility = View.INVISIBLE
+
         binding.btnPilihGambar.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
@@ -57,6 +62,10 @@ class PembayaranActivity : AppCompatActivity() {
         }
 
         binding.btnBergabung.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.tvTunggu.visibility = View.VISIBLE
+            binding.imageView10.visibility = View.INVISIBLE
+            binding.btnPilihGambar.visibility = View.INVISIBLE
             val id = firebaseUser?.uid
             val fileName: String = binding.radioGroup1.checkedRadioButtonId.toString() + Calendar.getInstance().time + ".jpeg"
             if (uriImage == null) {
@@ -64,39 +73,12 @@ class PembayaranActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-//            viewModel.uploadPembayaran(
-//                "idnyananang",
-//                "nanang",
-//                "pending",
-//                20000,
-//                "gopay",
-//                "test"
-//            ).observe(this, {
-//                it?.let { resource ->
-//                    when(resource.status){
-//                        Status.SUCCESS -> {
-//                            Log.d(TAG, "onCreate: upload succes")
-//                        }
-//
-//                        Status.LOADING -> {
-//                            Log.d(TAG, "onCreate: upload loading")
-//                        }
-//
-//                        Status.ERROR -> {
-//                            Log.d(TAG, "onCreate: upload error")
-//                        }
-//
-//                    }
-//                }
-//            })
-
-
             viewModel.uploadImage(this, id, uriImage, fileName, object : OnImageUploadCallback{
                 override fun onSuccess(imageUrl: String?) {
                     uploadToServer(imageUrl)
                     Log.d("Upload Image", "onSuccess: $imageUrl")
                     Toast.makeText(applicationContext, "Berhasil", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(applicationContext, TerimakasihActivity::class.java))
+
 
                 }
             })
@@ -117,31 +99,45 @@ class PembayaranActivity : AppCompatActivity() {
 
     private fun uploadToServer(imageUrl: String?) {
         Log.d(TAG, "uploadToServer: $imageUrl")
-        viewModel.uploadPembayaran(
-            "idnyananang",
-            "nanang",
-            "pending",
-            20000,
-            "gopay",
-            imageUrl!!
-        ).observe(this, {
-            it?.let { resource ->
+        firebaseUser?.let {
+            viewModel.uploadPembayaran(
+                it.uid,
+                it.displayName,
+                "pending",
+                20000,
+                "gopay",
+                imageUrl!!
+            ).observe(this, {
+                it?.let { resource ->
                     when(resource.status){
                         Status.SUCCESS -> {
+
                             Log.d(TAG, "onCreate: upload succes")
+                            startActivity(Intent(this, TerimakasihActivity::class.java))
                         }
 
                         Status.LOADING -> {
+                            binding.progressBar.visibility = View.VISIBLE
+                            binding.tvTunggu.visibility = View.VISIBLE
+                            binding.btnPilihGambar.visibility = View.INVISIBLE
+                            binding.imageView10.visibility = View.INVISIBLE
                             Log.d(TAG, "onCreate: upload loading")
                         }
 
                         Status.ERROR -> {
                             Log.d(TAG, "onCreate: upload error")
+                            binding.imageView10.visibility = View.VISIBLE
+                            binding.progressBar.visibility = View.INVISIBLE
+                            binding.tvTunggu.visibility = View.INVISIBLE
+                            binding.btnPilihGambar.visibility = View.VISIBLE
+
+
                         }
 
                     }
                 }
-        })
+            })
+        }
     }
 
     private fun setupViewModel() {

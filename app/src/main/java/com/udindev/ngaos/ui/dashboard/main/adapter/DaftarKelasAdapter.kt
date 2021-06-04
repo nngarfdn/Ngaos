@@ -59,6 +59,7 @@ class DaftarKelasAdapter(private val activity: Activity) : RecyclerView.Adapter<
         private var tv_pengajar : TextView = itemView.findViewById(R.id.textView2)
         fun bind(item: Data) {
             tvName.text = item.namaKelas
+            tv_pengajar.text = item.deskripsiKelas
             loadImageFromUrl(imgPhoto, item.fotoKelas)
         }
     }

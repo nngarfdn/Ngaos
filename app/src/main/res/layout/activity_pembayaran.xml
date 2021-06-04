@@ -170,6 +170,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView10"
         app:layout_constraintTop_toTopOf="@+id/imageView10" />
 
+
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="wrap_content"
@@ -188,6 +189,27 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
          />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+        app:layout_constraintEnd_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toStartOf="@+id/imageView10"
+        app:layout_constraintTop_toTopOf="@+id/imageView10"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true" />
 
+    <TextView
+        android:id="@+id/tv_tunggu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tunggu Sebentar"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_pilih_gambar"
+        app:layout_constraintEnd_toEndOf="@+id/btn_pilih_gambar"
+        app:layout_constraintStart_toStartOf="@+id/btn_pilih_gambar"
+        app:layout_constraintTop_toTopOf="@+id/btn_pilih_gambar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
