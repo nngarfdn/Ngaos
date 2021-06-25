@@ -78,6 +78,7 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
 
         binding.imageView2.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
         binding.editText.setOnClickListener { startActivity(Intent(this, SearchActivity::class.java)) }
+        binding.cardView.setOnClickListener { startActivity(Intent(this, JadwalSholatActivity::class.java))  }
 
 
     }

@@ -9,16 +9,18 @@ import androidx.lifecycle.MutableLiveData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.udindev.ngaos.data.model.Account;
 import com.udindev.ngaos.ui.auth.preference.AuthPreference;
 
 public class AuthAppRepository {
     private Application application;
-
+    private FirebaseFirestore database;
     private FirebaseAuth firebaseAuth;
     private MutableLiveData<FirebaseUser> userLiveData;
     private MutableLiveData<Boolean> loggedOutLiveData;
     private final AuthPreference authPreference;
+
 
     public AuthAppRepository(Application application) {
         this.application = application;
