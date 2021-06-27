@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.dashboard.main.view.IntroActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="32dp"
+        android:orientation="vertical"
+        tools:context=".ui.auth.main.view.IntroActivity">
+        <TextView
+            android:id="@+id/txt_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/txt_intro2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="Ngaos" />
+        <TextView
+            android:id="@+id/txt_intro2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="normal"
+            android:textSize="14sp"
+            android:text="Cari guru ngaji dengan mudah" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:lottie_rawRes="@raw/animation_intro"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:layout_constraintTop_toBottomOf="@id/txt_intro2"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_mulai"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Mulai"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/animationView" />
+    </LinearLayout>
+</ScrollView>

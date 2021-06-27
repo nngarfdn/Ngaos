@@ -86,9 +86,12 @@ ssa fusce. Donec tincidunt dictum sem tristique malesuada
     <string name="segera_amankan_kelas_ini_sebelum_kuota_habis">Segera amankan kelas ini sebelum kuota habis.</string>
     <string name="pesan_sekarang">Pesan Sekarang</string>
 
-   <string name="terimakasihh" translatable="false">Selanjutnya admin akan memverifikasi bukti pembayaran dalam waktu maksimal 1 x 24 jam. Apabila dalam waktu tersebut belum dilakukan verifikasi bisa menghu-
+    <string name="terimakasihh" translatable="false">Selanjutnya admin akan memverifikasi bukti pembayaran dalam waktu maksimal 1 x 24 jam. Apabila dalam waktu tersebut belum dilakukan verifikasi bisa menghu-
 bungi admin :
 Whatsapp : 081234567890
 Email : admin@ngaosapp.com</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

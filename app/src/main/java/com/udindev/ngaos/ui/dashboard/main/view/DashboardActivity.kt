@@ -53,7 +53,7 @@ class DashboardActivity : AppCompatActivity(),MySimpleLocation.MySimpleLocationC
     private lateinit var authPreference: AuthPreference
     private var pressedTime: Long = 0
     companion object{
-        private const val TAG = "Sholat Activity"
+        const val TAG = "Sholat Activity"
         private const val MAP_BUTTON_REQUEST_CODE = 1
     }
 
