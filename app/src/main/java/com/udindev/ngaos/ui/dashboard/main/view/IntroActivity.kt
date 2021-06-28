@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.udindev.ngaos.R
+import com.udindev.ngaos.ui.auth.main.view.LoginActivity
 
 class IntroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +15,7 @@ class IntroActivity : AppCompatActivity() {
         var btn_intro = findViewById(R.id.btn_mulai) as Button
 
         btn_intro.setOnClickListener {
-            val intent = Intent(this, DashboardActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent);
         }
     }
